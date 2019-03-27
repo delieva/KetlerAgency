@@ -1,0 +1,6 @@
+@import "burger.css";
+@import "slider.css";
+@import "navigation.css";
+body{
+    margin: 0;
+}

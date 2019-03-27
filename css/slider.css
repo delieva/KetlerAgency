@@ -1,0 +1,83 @@
+
+#slides{
+    position: relative;
+    width: 100%;
+    padding: 0px;
+    margin: 0;
+    /*height: auto;*/
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+
+.slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /*width: 100%;*/
+    opacity: 0;
+    min-width: 100%;
+    -webkit-transition: opacity 4s;
+    -moz-transition: opacity 4s;
+    -o-transition: opacity 4s;
+    transition: opacity 4s;
+}
+
+.showing{
+    opacity: 0.75;
+}
+
+.above_slider{
+    position: absolute;
+    background-color: black;
+    opacity: 0.5;
+    /*height: auto;*/
+    z-index: 100;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}
+
+.slider_text{
+    position: absolute;
+    z-index: 50;
+    margin: auto;
+    font-family: "Big Caslon";
+    /*text-shadow:*/
+            /*-0   -2px 0   #000000,*/
+            /*0   -2px 0   #000000,*/
+            /*-0    2px 0   #000000,*/
+            /*0    2px 0   #000000,*/
+            /*-2px -0   0   #000000,*/
+            /*2px -0   0   #000000,*/
+            /*-2px  0   0   #000000,*/
+            /*2px  0   0   #000000,*/
+            /*-1px -2px 0   #000000,*/
+            /*1px -2px 0   #000000,*/
+            /*-1px  2px 0   #000000,*/
+            /*1px  2px 0   #000000,*/
+            /*-2px -1px 0   #000000,*/
+            /*2px -1px 0   #000000,*/
+            /*-2px  1px 0   #000000,*/
+            /*2px  1px 0   #000000,*/
+            /*-2px -2px 0   #000000,*/
+            /*2px -2px 0   #000000,*/
+            /*-2px  2px 0   #000000,*/
+            /*2px  2px 0   #000000,*/
+            /*-2px -2px 0   #000000,*/
+            /*2px -2px 0   #000000,*/
+            /*-2px  2px 0   #000000,*/
+            /*2px  2px 0   #000000;*/
+}
+.white{
+    color: black;
+    font-size: 3em;
+    font-weight: bold;
+    z-index: 100;
+}
+.black{
+    color: white;
+    font-size: 3.05em;
+    font-weight: bold;
+}
