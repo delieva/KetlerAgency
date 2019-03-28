@@ -8,12 +8,13 @@
 </head>
 <body>
 <div id="navigation">
-    <div class="logo">
+    <div class="logo text">
         <img src="media/K.png">
+        <div>etler.</div>
     </div>
     <nav>
         <ul class="menu" >
-            <li class="sub_menu"><a href="#greeting">Head</a></li>
+            <li class="sub_menu"><a class="text" href="#greeting">Head</a></li>
             <!--<li class="sub_menu">-->
                 <!--<a class="text" href="#skills">Skills</a>-->
                 <!--<ul class="subsub_menu">-->
@@ -34,16 +35,15 @@
     </nav>
 </div>
         <figure id="slides">
-            <figure class="above_slider">
-            </figure>
-            <div class="slider_text white">The way to your home</div>
-            <div class="slider_text black">The way to your home</div>
+            <!--<figure class="above_slider">-->
+            <!--</figure>-->
+            <div class="slider_text text">The way to your home</div>
             <img class="slide" src="media/f218ee14af62f63e876e706260efd8bb-1024x675.jpg" alt="My photo">
             <img class="slide showing" src="media/1547801260_01.jpg" alt="My photo">
             <img class="slide" src="media/doma.jpg" alt="My photo">
-            <!--<img class="slide" src="media/image2076-768x511.jpg" alt="My photo">-->
             <!--<img class="slide" src="media/Kryukovshhine11.jpg" alt="My photo">-->
         </figure>
+<img class='slider_background' src="media/background.jpg" alt="">
 <!--<img src="media/doma.jpg" alt="My photo">-->
 <!--<img src="media/doma.jpg" alt="My photo">-->
 <!--<img  src="media/doma.jpg" alt="My photo">-->
@@ -52,9 +52,9 @@
 <!--<img src="media/doma.jpg" alt="My photo">-->
 <!--<img src="media/doma.jpg" alt="My photo">-->
     <script>
-		var slides = document.querySelectorAll('#slides .slide');
-		var currentSlide = 0;
-		var slideInterval = setInterval(nextSlide,6000);
+		let slides = document.querySelectorAll('#slides .slide');
+		let currentSlide = 0;
+		let slideInterval = setInterval(nextSlide,6000);
 
 		function nextSlide(){
 			slides[currentSlide].className = 'slide';

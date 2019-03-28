@@ -24,26 +24,16 @@
 }
 
 .showing{
-    opacity: 0.75;
-}
-
-.above_slider{
-    position: absolute;
-    background-color: black;
-    opacity: 0.5;
-    /*height: auto;*/
-    z-index: 100;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
+    opacity: 0.4;
 }
 
 .slider_text{
     position: absolute;
     z-index: 50;
+    color: white;
+    font-weight: bold;
+    font-size: 4em;
     margin: auto;
-    font-family: "Big Caslon";
     /*text-shadow:*/
             /*-0   -2px 0   #000000,*/
             /*0   -2px 0   #000000,*/
@@ -70,14 +60,9 @@
             /*-2px  2px 0   #000000,*/
             /*2px  2px 0   #000000;*/
 }
-.white{
-    color: black;
-    font-size: 3em;
-    font-weight: bold;
-    z-index: 100;
-}
-.black{
-    color: white;
-    font-size: 3.05em;
-    font-weight: bold;
+
+.slider_background{
+    width: 100%;
+    background-color: black;
+
 }

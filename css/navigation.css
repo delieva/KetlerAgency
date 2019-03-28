@@ -1,10 +1,9 @@
 nav{
     padding: 0px;
-
+    display: inline-block;
 }
 #navigation{
-    margin-top: -8px;
-    background-color: gray;
+    /*display: flex;*/
     height: 5em;
     z-index: 100;
 }
@@ -19,9 +18,26 @@ nav{
     color: black;
     padding: 5px;
     display: inline-block;
-    font-family: "Big Caslon";
 }
 
 #navigation li a:hover{
-    color: #7393AB;
+    color: #673f0f;
+}
+
+.logo{
+    height: 100%;
+    margin: 0;
+    width: 20%;
+    display: inline-block;
+}
+
+.logo img{
+    height: 80%;
+    margin: 10px 0 0 10px;
+    display: inline-block;
+
+}
+.logo div{
+    display: inline-block;
+    font-size: 3em;
 }
