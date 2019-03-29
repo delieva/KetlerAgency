@@ -7,19 +7,22 @@
     <link rel="shortcut icon" href="media/K.png" type="image/x-icon">
 </head>
 <body>
-<div id="navigation">
+    <header class="head ">
     <div class="logo text">
         <img src="media/K.png">
         <div>etler.</div>
     </div>
-    <nav>
+    <nav id="navigation">
         <ul class="menu" >
-            <li class="sub_menu"><a class="text" href="#greeting">Head</a></li>
+            <li class="sub_menu"><a class="text" href="#greeting">Buy</a></li>
             <!--<li class="sub_menu">-->
                 <!--<a class="text" href="#skills">Skills</a>-->
                 <!--<ul class="subsub_menu">-->
                 <!--</ul>-->
             <!--</li>-->
+            <li class="sub_menu"><a class="text" href="#connect">Rent</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">Sell</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">About agency</a></li>
             <li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>
         </ul>
         <div class="wrapper_burger">
@@ -33,24 +36,23 @@
             </nav>
         </div>
     </nav>
-</div>
-        <figure id="slides">
-            <!--<figure class="above_slider">-->
-            <!--</figure>-->
+</header>
+    <div id="slides">
+        <div class="slider_inside">
             <div class="slider_text text">The way to your home</div>
-            <img class="slide" src="media/f218ee14af62f63e876e706260efd8bb-1024x675.jpg" alt="My photo">
-            <img class="slide showing" src="media/1547801260_01.jpg" alt="My photo">
-            <img class="slide" src="media/doma.jpg" alt="My photo">
-            <!--<img class="slide" src="media/Kryukovshhine11.jpg" alt="My photo">-->
-        </figure>
-<img class='slider_background' src="media/background.jpg" alt="">
-<!--<img src="media/doma.jpg" alt="My photo">-->
-<!--<img src="media/doma.jpg" alt="My photo">-->
-<!--<img  src="media/doma.jpg" alt="My photo">-->
-<!--<img  src="media/doma.jpg" alt="My photo">-->
-<!--<img  src="media/doma.jpg" alt="My photo">-->
-<!--<img src="media/doma.jpg" alt="My photo">-->
-<!--<img src="media/doma.jpg" alt="My photo">-->
+            <nav id="slider_navigation">
+                <ul class="slider_menu">
+                    <li class="slider_menu_item"><a class="text" href="#greeting">Buy</a></li>
+                    <li class="slider_menu_item"><a class="text" href="#connect">Rent</a></li>
+                    <li class="slider_menu_item"><a class="text" href="#connect">Sell</a></li>
+                </ul>
+            </nav>
+        </div>
+        <img class="slide showing" src="media/f218ee14af62f63e876e706260efd8bb-1024x675.jpg" alt="My photo">
+        <img class="slide" src="media/1547801260_01.jpg" alt="My photo">
+        <img class="slide" src="media/doma.jpg" alt="My photo">
+        <!--<img class="slide" src="media/Kryukovshhine11.jpg" alt="My photo">-->
+    </div>
     <script>
 		let slides = document.querySelectorAll('#slides .slide');
 		let currentSlide = 0;
