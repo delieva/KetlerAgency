@@ -1,5 +1,11 @@
 /*Make the wrap #slides the same size as photos*/
 /*with setting the same aspect ratio(20x9)*/
+@media screen and (max-width: 760px){
+    #slides{
+        display: flex;
+    }
+}
+
 #slides{
     position: relative;
     width: 100%;

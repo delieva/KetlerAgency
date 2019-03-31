@@ -1,10 +1,11 @@
+
 .wrapper_burger{
     width: 50px;
     position: fixed;
     text-align: center;
     height: 50px;
-    top: 10px;
-    left: 10px;
+    top: 2em;
+    right: 10px;
     z-index: 1000;
     display: none;
 }
@@ -79,3 +80,10 @@
 #check-menu:checked ~ .fourth{
     display: none;
 }
+
+@media screen and (max-width: 797px){
+    .wrapper_burger{
+        display: inline;
+    }
+}
+
