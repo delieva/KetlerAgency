@@ -1,0 +1,11 @@
+{
+  "type": "sell",
+  "photo": "",
+  "rooms": 3,
+  "square": 80,
+  "city": "Kyiv",
+  "district": "Solomensky",
+  "address": "Yangelya,20",
+  "cost": 30000,
+  "full_description": ""
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ketleragency",
+  "version": "1.0.0",
+  "description": "petProject",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delieva/KetlerAgency.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delieva/KetlerAgency/issues"
+  },
+  "homepage": "https://github.com/delieva/KetlerAgency#readme"
+}
