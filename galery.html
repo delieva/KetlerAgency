@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header class="head">
@@ -36,37 +37,104 @@
             </div>
         </nav>
     </header>
-    <form>
-        <input type="text" id="search">
-    </form>
-    <ul id="results">
-    </ul>
+    <!--<form>-->
+        <!--<input type="text" id="search">-->
+    <!--</form>-->
+    <!--<ul id="results">-->
+    <!--</ul>-->
+
+    <!--Временное отображение карточки-->
+    <span class="hello"></span>
+    <div class="card_container">
+    <!--<div class="card">-->
+        <!--<div class="card_photo">-->
+            <!--<div class="card_photo_cover">-->
+                <!--<span class="cost" >45</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="card_description">-->
+            <!--<div class="short_description text">-->
+                <!--1003 Woodard St, Houston, TX 77009-->
+                <!--3 beds2 baths1 460 sq ft5 301-->
+            <!--</div>-->
+            <!--<div class="card_telephone text"> +380661234567</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    </div>
+
+
     <script>
-		let list = ['JavaScript','Kotlin','Rust','PHP','Ruby','Java','MarkDown','Python','C++','Fortran','Assembler']
-		const result = document.getElementById('results')
-		renderList(list,result)
 
-		function filter(val,list){
-			let result=[];
-			list.forEach(i=>{
-				if(i.indexOf(val)!=-1)
-					result.push(i)
-			})
-			return result;
-		}
-		function renderList(_list=[],el=document.body){
-			el.innerHTML='';
-			_list.forEach(i=>{
-
-				let new_el = document.createElement('li')
-				new_el.innerHTML=i
-				el.appendChild(new_el)
-			})
-		}
-		document.getElementById('search').addEventListener('input',e=>{
-			let new_arr = filter(e.target.value,list)
-			renderList(new_arr,result)
+		axios.post('/galery.html', {
+			firstName: 'Fred',
+			lastName: 'Flintstone'
 		})
+			.then(function (response) {
+				let container  = document.getElementsByClassName('card_container')[0];
+				const currNode = document.createElement('div');
+				currNode.className= "card";
+				container.appendChild(currNode);
+
+
+
+				// console.log(response);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		// 		function start(){
+// 			let x=document.getElementsByClassName('card_container').value;
+//
+// 			let xhr=new XMLHttpRequest();
+// 			xhr.onreadystatechange=function(){
+// 				if (xhr.readyState==4 && xhr.status==200)
+// 					document.getElementsByClassName('card_container').innerHTML=xhr.responseText;
+// 			}
+// 			xhr.open('POST','http://localhost:8080/galery.html',true);
+// //Установим тип передаваемого содержимого как у форм
+// 			xhr.setRequestHeader('Content-type', 'text/plain');
+// 			let z = 'Hello';
+// 			xhr.send("card_container=" + z);
+// 		}
+
+
+		// window.onload = function(event) {
+		// 	// - Code to execute when all DOM content is loaded.
+		// 	// - including fonts, images, etc.
+        //     start();
+		// };
+
+
+
+		// let list = ['JavaScript','Kotlin','Rust','PHP','Ruby','Java','MarkDown','Python','C++','Fortran','Assembler']
+		// const result = document.getElementById('results')
+		// renderList(list,result)
+        //
+		// function filter(val,list){
+		// 	let result=[];
+		// 	list.forEach(i=>{
+		// 		if(i.indexOf(val)!=-1)
+		// 			result.push(i)
+		// 	})
+		// 	return result;
+		// }
+		// function renderList(_list=[],el=document.body){
+		// 	el.innerHTML='';
+		// 	_list.forEach(i=>{
+        //
+		// 		let new_el = document.createElement('li')
+		// 		new_el.innerHTML=i
+		// 		el.appendChild(new_el)
+		// 	})
+		// }
+		// document.getElementById('search').addEventListener('input',e=>{
+		// 	let new_arr = filter(e.target.value,list)
+		// 	renderList(new_arr,result)
+		// })
+
+
+
+
 		// renderList(list,result)
 		// function filter(val,list){
 		// 	console.time('test')

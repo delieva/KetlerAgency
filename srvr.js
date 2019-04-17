@@ -5,16 +5,7 @@ const fs = require('fs')
 const url = require('url');
 
 
-// let html = fs.readFileSync('main.html','utf8');
-// let css = fs.readFileSync('css/main.css','utf8')
-
-// console.log(html)
-//
-
-
 let obj = JSON.parse(fs.readFileSync("AdvertsJSON/adverts.json"))
-
-
 
 
 http.createServer((req, res) => {
