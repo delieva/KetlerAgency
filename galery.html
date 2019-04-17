@@ -70,86 +70,52 @@
 			lastName: 'Flintstone'
 		})
 			.then(function (response) {
-				let container  = document.getElementsByClassName('card_container')[0];
-				const currNode = document.createElement('div');
-				currNode.className= "card";
-				container.appendChild(currNode);
 
-
-
-				// console.log(response);
-			})
+				let i = 0;
+				response.data.forEach((obj, i) => {
+						let parNode  = document.getElementsByClassName('card_container')[0];
+						let currNode = document.createElement('div');
+						currNode.className= "card";
+						parNode.appendChild(currNode);
+						//
+						parNode = document.getElementsByClassName('card')[i]
+						currNode = document.createElement('div');
+						currNode.className= "card_photo";
+						parNode.appendChild(currNode);
+						//
+						currNode = document.createElement('div');
+						currNode.className= "card_description";
+						parNode.appendChild(currNode);
+						//
+						parNode = document.getElementsByClassName('card_photo')[i]
+						currNode = document.createElement('div');
+						currNode.className= "card_photo_cover";
+						parNode.appendChild(currNode);
+						//
+						parNode = document.getElementsByClassName('card_photo_cover')[i]
+						currNode = document.createElement('span');
+						currNode.className= "cost";
+					    currNode.innerHTML = obj.cost;
+						parNode.appendChild(currNode);
+						//
+						parNode = document.getElementsByClassName('card_description')[i]
+						currNode = document.createElement('div');
+						currNode.className= "short_description text";
+					    currNode.innerHTML = obj.city + ', ' + obj.district + ' district, ' + obj.address + ', ' + obj.rooms + ' rooms, ' + obj.square + ' m2';
+						parNode.appendChild(currNode);
+						//
+						parNode = document.getElementsByClassName('card_description')[i]
+						currNode = document.createElement('div');
+						currNode.className= "card_telephone text";
+						currNode.innerHTML = obj.telephone;
+						parNode.appendChild(currNode);
+						console.log(response);
+						i++
+					})
+                })
 			.catch(function (error) {
 				console.log(error);
 			});
-		// 		function start(){
-// 			let x=document.getElementsByClassName('card_container').value;
-//
-// 			let xhr=new XMLHttpRequest();
-// 			xhr.onreadystatechange=function(){
-// 				if (xhr.readyState==4 && xhr.status==200)
-// 					document.getElementsByClassName('card_container').innerHTML=xhr.responseText;
-// 			}
-// 			xhr.open('POST','http://localhost:8080/galery.html',true);
-// //Установим тип передаваемого содержимого как у форм
-// 			xhr.setRequestHeader('Content-type', 'text/plain');
-// 			let z = 'Hello';
-// 			xhr.send("card_container=" + z);
-// 		}
-
-
-		// window.onload = function(event) {
-		// 	// - Code to execute when all DOM content is loaded.
-		// 	// - including fonts, images, etc.
-        //     start();
-		// };
-
-
-
-		// let list = ['JavaScript','Kotlin','Rust','PHP','Ruby','Java','MarkDown','Python','C++','Fortran','Assembler']
-		// const result = document.getElementById('results')
-		// renderList(list,result)
-        //
-		// function filter(val,list){
-		// 	let result=[];
-		// 	list.forEach(i=>{
-		// 		if(i.indexOf(val)!=-1)
-		// 			result.push(i)
-		// 	})
-		// 	return result;
-		// }
-		// function renderList(_list=[],el=document.body){
-		// 	el.innerHTML='';
-		// 	_list.forEach(i=>{
-        //
-		// 		let new_el = document.createElement('li')
-		// 		new_el.innerHTML=i
-		// 		el.appendChild(new_el)
-		// 	})
-		// }
-		// document.getElementById('search').addEventListener('input',e=>{
-		// 	let new_arr = filter(e.target.value,list)
-		// 	renderList(new_arr,result)
-		// })
-
-
-
-
-		// renderList(list,result)
-		// function filter(val,list){
-		// 	console.time('test')
-		// 	return list.filter(i=>(~i.indexOf(val)))
-		// };
-		// function renderList(_list=[],el=document.body){
-		// 	el.innerHTML='';
-		// 	_list.forEach(i=>{
-		// 		let new_el = document.createElement('li')
-		// 		new_el.innerHTML=i
-		// 		el.appendChild(new_el)
-		// 	})
-		// 	console.timeEnd('test')
-		// }
-		// document.getElementById('search').addEventListener('input',e=>renderList(filter(e.target.value,list),result))
 
     </script>
 </body>

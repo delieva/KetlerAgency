@@ -1,4 +1,4 @@
-{
+[{
   "type": "sell",
   "photo": "",
   "rooms": 3,
@@ -7,5 +7,54 @@
   "district": "Solomensky",
   "address": "Yangelya,20",
   "cost": 30000,
-  "full_description": ""
-}
+  "full_description": "",
+  "telephone": "0661234567"
+},
+  {
+    "type": "sell",
+    "photo": "",
+    "rooms": 3,
+    "square": 80,
+    "city": "Kyiv",
+    "district": "Solomensky",
+    "address": "Yangelya,20",
+    "cost": 30000,
+    "full_description": "",
+    "telephone": "0661234567"
+  },
+  {
+    "type": "sell",
+    "photo": "",
+    "rooms": 3,
+    "square": 80,
+    "city": "Kyiv",
+    "district": "Solomensky",
+    "address": "Yangelya,20",
+    "cost": 30000,
+    "full_description": "",
+    "telephone": "0661234567"
+  },
+  {
+    "type": "sell",
+    "photo": "",
+    "rooms": 3,
+    "square": 80,
+    "city": "Kyiv",
+    "district": "Solomensky",
+    "address": "Yangelya,20",
+    "cost": 30000,
+    "full_description": "",
+    "telephone": "0661234567"
+  },
+  {
+    "type": "sell",
+    "photo": "",
+    "rooms": 3,
+    "square": 80,
+    "city": "Kyiv",
+    "district": "Solomensky",
+    "address": "Yangelya,20",
+    "cost": 30000,
+    "full_description": "",
+    "telephone": "0661234567"
+  }]
