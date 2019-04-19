@@ -9,7 +9,6 @@
     margin: 1.5em 0.5em;
 }
 .card_photo{
-    background-image: url("../media/AdvPhotos/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg");
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     height: 65%;
@@ -46,5 +45,5 @@
     padding: 0 5%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -45,78 +46,37 @@
 
     <!--Временное отображение карточки-->
     <span class="hello"></span>
+    <section class="pagination">
+
+        <!--<label>Go to Page <input type="text" name="page_input" id="page_input" value=""></label>-->
+
+        <!--<a href="#" id="goto">&gt;&gt;</a>-->
+
+        <nav class="pagination_nav">
+            <a href="http://" class="previous">&lt; Prev</a>
+            <ul class="page_nav">
+
+            </ul>
+            <a href="http://" class="next">Next &gt;</a>
+        </nav>
+    </section>
     <div class="card_container">
-    <!--<div class="card">-->
-        <!--<div class="card_photo">-->
-            <!--<div class="card_photo_cover">-->
-                <!--<span class="cost" >45</span>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="card_description">-->
-            <!--<div class="short_description text">-->
-                <!--1003 Woodard St, Houston, TX 77009-->
-                <!--3 beds2 baths1 460 sq ft5 301-->
-            <!--</div>-->
-            <!--<div class="card_telephone text"> +380661234567</div>-->
-        <!--</div>-->
-    <!--</div>-->
+
     </div>
+    <section class="pagination">
 
+        <!--<label>Go to Page <input type="text" name="page_input" id="page_input" value=""></label>-->
 
-    <script>
+        <!--<a href="#" id="goto">&gt;&gt;</a>-->
 
-		axios.post('/galery.html', {
-			firstName: 'Fred',
-			lastName: 'Flintstone'
-		})
-			.then(function (response) {
+        <nav class="pagination_nav">
+            <a href="http://" class="previous">&lt; Prev</a>
+            <ul class="page_nav">
 
-				let i = 0;
-				response.data.forEach((obj, i) => {
-						let parNode  = document.getElementsByClassName('card_container')[0];
-						let currNode = document.createElement('div');
-						currNode.className= "card";
-						parNode.appendChild(currNode);
-						//
-						parNode = document.getElementsByClassName('card')[i]
-						currNode = document.createElement('div');
-						currNode.className= "card_photo";
-						parNode.appendChild(currNode);
-						//
-						currNode = document.createElement('div');
-						currNode.className= "card_description";
-						parNode.appendChild(currNode);
-						//
-						parNode = document.getElementsByClassName('card_photo')[i]
-						currNode = document.createElement('div');
-						currNode.className= "card_photo_cover";
-						parNode.appendChild(currNode);
-						//
-						parNode = document.getElementsByClassName('card_photo_cover')[i]
-						currNode = document.createElement('span');
-						currNode.className= "cost";
-					    currNode.innerHTML = obj.cost;
-						parNode.appendChild(currNode);
-						//
-						parNode = document.getElementsByClassName('card_description')[i]
-						currNode = document.createElement('div');
-						currNode.className= "short_description text";
-					    currNode.innerHTML = obj.city + ', ' + obj.district + ' district, ' + obj.address + ', ' + obj.rooms + ' rooms, ' + obj.square + ' m2';
-						parNode.appendChild(currNode);
-						//
-						parNode = document.getElementsByClassName('card_description')[i]
-						currNode = document.createElement('div');
-						currNode.className= "card_telephone text";
-						currNode.innerHTML = obj.telephone;
-						parNode.appendChild(currNode);
-						console.log(response);
-						i++
-					})
-                })
-			.catch(function (error) {
-				console.log(error);
-			});
-
-    </script>
+            </ul>
+            <a href="http://" class="next">Next &gt;</a>
+        </nav>
+    </section>
+    <script src="test/pag.js"></script>
 </body>
 </html>

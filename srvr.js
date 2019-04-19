@@ -9,7 +9,7 @@ let obj = JSON.parse(fs.readFileSync("AdvertsJSON/adverts.json"))
 
 
 http.createServer((req, res) => {
-	console.log(req.method);
+	console.log(req.url);
 	if(req.url === '/' || req.url === "") {
 		req.url = 'main.html'
 	}
@@ -28,7 +28,7 @@ http.createServer((req, res) => {
 					'.js' : 'text/javascript'
 				}[ req.url.substr(dotoffset) ];
 			res.setHeader('Content-type' , mimetype);
-			if(req.method === 'POST' && req.url === '/galery.html'){
+			if(req.method === 'POST'){
 				res.end(JSON.stringify(obj), data);
 				// console.log(req.url)
 			}
