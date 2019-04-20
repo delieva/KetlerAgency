@@ -220,6 +220,17 @@
 	window.addEventListener("load", function() {
 		axios.post("./galery.html", {})
 			.then(function(res){
+				let set = new Set();
+				res.data.forEach((obj) => {
+					set.add(obj.city)
+				})
+				for(let item of set){
+					let parNode  = document.getElementsByClassName('filter_city')[0];
+					let currNode = document.createElement('option');
+					currNode.innerText = item;
+					currNode.className= "filter_city_option";
+					parNode.appendChild(currNode);
+				}
 				changeConfigs(res.data);
 				init(res.data);
 			})
@@ -228,6 +239,30 @@
 			});
 	});
 
+	function buildSortCity(){
+	
+	}
+	
+	document.getElementsByClassName('filter_city')[0].onchange = function(){
+		axios.post("./galery.html", {})
+			.then(function(res){
+				let set = new Set();
+				res.data.forEach((obj) => {
+					set.add(obj.district)
+				})
+				for(let item of set){
+					let parNode  = document.getElementsByClassName('filter_district')[0];
+					let currNode = document.createElement('option');
+					currNode.innerText = item;
+					currNode.className= "filter_district_option";
+					parNode.appendChild(currNode);
+				}
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
+	};
+	
 	document.getElementsByClassName("filter_button")[0].onclick = function(){
 		// init(filteredData);
 		axios.post("./galery.html", {})
