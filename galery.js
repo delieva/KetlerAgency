@@ -21,25 +21,11 @@
 	
 	
 	function filter_by_district(value){
-		// if(place === '' && meaning === ''){
-		// 	return true;
-		// }
-		// else{
-			return value.district === document.getElementsByClassName('filter_district')[0].value;
-		// }
+		return value.district === document.getElementsByClassName('filter_district')[0].value;
 	}
 	
 	function filter_by_city(value){
-		// if(place === '' && meaning === ''){
-		// 	return true;
-		// }
-		// else{
-		// 	for(let key in value){
-		// 		if(key === place){
-					return value.city === document.getElementsByClassName('filter_city')[0].value;
-		// 		}
-		// 	}
-		// }
+		return value.city === document.getElementsByClassName('filter_city')[0].value;
 	}
 	
 	function filter(someData, city, district) {
@@ -120,8 +106,6 @@
 
 	//Work with next/prev/goto
 	function pager(action, someData, page) {
-		//const nOfPages = someData.length;
-		console.log(config.page + ' ' + nOfPages)
 		document.getElementsByClassName('pagination_page')[config.page-1].style.backgroundColor = "#ffffff";
 		document.getElementsByClassName('pagination_page')[config.page-1 + nOfPages].style.backgroundColor = "#ffffff";
 		switch (action) {
@@ -157,7 +141,6 @@
 	//Building navigation bar
 	function build_nav() {
 		let page_nav = "";
-		// console.log(nOfPages)
 		for(let i = 1; i <= nOfPages; i++ ){
 			page_nav += "<li class='pagination_page'><a data-page=" + i + ">" + i + "</a></li>\n";
 		}
@@ -247,9 +230,12 @@
 		axios.post("./galery.html", {})
 			.then(function(res){
 				let set = new Set();
+				res.data = res.data.filter(filter_by_city)
+				console.log(res.data)
 				res.data.forEach((obj) => {
 					set.add(obj.district)
 				})
+				document.getElementsByClassName('filter_district')[0].innerHTML = '<option></option>';
 				for(let item of set){
 					let parNode  = document.getElementsByClassName('filter_district')[0];
 					let currNode = document.createElement('option');
@@ -264,7 +250,6 @@
 	};
 	
 	document.getElementsByClassName("filter_button")[0].onclick = function(){
-		// init(filteredData);
 		axios.post("./galery.html", {})
 			.then(function(res){
 				let filteredData = filter(res.data, document.getElementsByClassName('filter_city')[0].value, document.getElementsByClassName('filter_district')[0].value);
