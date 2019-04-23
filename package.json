@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/delieva/KetlerAgency/issues"
   },
-  "homepage": "https://github.com/delieva/KetlerAgency#readme"
+  "homepage": "https://github.com/delieva/KetlerAgency#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "multer": "^1.4.1"
+  }
 }

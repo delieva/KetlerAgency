@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Advert</title>
+    <link rel="stylesheet" type="text/css" href="css/makeAdvert.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form action="/makeAdvert.html" method="post" enctype="multipart/form-data">
+        <label for="GET-name">Name:</label>
+        <input id="GET-name" type="text" name="name">
+        <input type="checkbox" value="Rent" name="rent">
+        <input type="checkbox" value="Sale" name="sale">
+        <input type="number" name="rooms">
+        <input type="number" name="square">
+        <input id="1" type="text" name="city">
+        <input id="2" type="text" name="district">
+        <input id="3" type="text" name="address">
+        <input type="number" name="cost">
+        <input id="4" type="text" name="telephone">
+        <textarea name="description">Text about your object, that presents it</textarea>
+        <input id="file" type="file" name="photo" multiple="multiple" accept="image/*,image/jpeg">
+        <input type="submit">
+    </form>
+<script>
+	var formData = new FormData();
+	document.getElementsByTagName('form')[0].addEventListener("submit", function() {
+		axios.post("./galery.html", {})
+			.then(function(res){
+				var imagefile = document.getElementById('file');
+				formData.append("image", imagefile.files[0]);
+				formData.append("hello", imagefile.files[0]);
+				console.log('bitch')
+				console.log(formData);
+				axios.post('/makeAdvert.html', formData, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					}
+				})
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
+	});
+</script>
+</body>
+</html>

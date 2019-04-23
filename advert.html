@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advert</title>
+    <link rel="stylesheet" type="text/css" href="css/advert.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<header class="head">
+    <div class="logo text">
+        <img src="media/K.png">
+        <div>etler.</div>
+    </div>
+    <nav id="navigation">
+        <ul class="menu" >
+            <li class="sub_menu"><a class="text" href="#greeting">Buy</a></li>
+            <!--<li class="sub_menu">-->
+            <!--<a class="text" href="#skills">Skills</a>-->
+            <!--<ul class="subsub_menu">-->
+            <!--</ul>-->
+            <!--</li>-->
+            <li class="sub_menu"><a class="text" href="#connect">Rent</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">Sell</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">About agency</a></li>
+            <!--<li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>-->
+        </ul>
+        <div class="wrapper_burger">
+            <input type="checkbox" id="check-menu">
+            <label for="check-menu"></label>
+            <div class="burger-line first"></div>
+            <div class="burger-line second"></div>
+            <div class="burger-line third"></div>
+            <div class="burger-line fourth"></div>
+            <nav class="burger-menu">
+            </nav>
+        </div>
+    </nav>
+</header>
+<div class="advert_block">
+    <div class="advert_block_pictures">
+        <div class="main_picture_wrapper">
+            <img class="main_picture" src="media/doma.jpg" alt="">
+        </div>
+        <div class="sub_picture_wrapper">
+            <img class="sub_picture" src="media/doma.jpg" alt="">
+            <img class="sub_picture" src="media/f218ee14af62f63e876e706260efd8bb-1024x675.jpg" alt="">
+            <img class="sub_picture" src="media/forCV.jpg" alt="">
+            <img class="sub_picture" src="media/sloniki.jpg" alt="">
+            <img class="sub_picture" src="media/forCV.jpg" alt="">
+            <img class="sub_picture" src="media/sloniki.jpg" alt="">
+        </div>
+    </div>
+    <div class="advert_block_information">
+
+    </div>
+</div>
+
+
+
+<script>
+
+	window.addEventListener("load", function() {
+		axios.post("./advert.html", {})
+			.then(function(res){
+
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
+	});
+
+
+    let arr = document.getElementsByClassName('sub_picture');
+    for(let i = 0; i < arr.length; i++){
+		arr[i].onclick = function () {
+			document.getElementsByClassName('main_picture')[0].src = arr[i].src;
+		}
+    }
+
+</script>
+</body>
+</html>

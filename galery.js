@@ -200,7 +200,7 @@
 		}
 	}
 	
-	window.addEventListener("load", function() {
+	//window.addEventListener("load", function() {
 		axios.post("./galery.html", {})
 			.then(function(res){
 				let set = new Set();
@@ -220,11 +220,8 @@
 			.catch(function (err) {
 				console.log(err);
 			});
-	});
-
-	function buildSortCity(){
+	//});
 	
-	}
 	
 	document.getElementsByClassName('filter_city')[0].onchange = function(){
 		axios.post("./galery.html", {})
