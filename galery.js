@@ -183,7 +183,7 @@
 			parNode = document.getElementsByClassName('card_photo_cover')[i]
 			currNode = document.createElement('span');
 			currNode.className= "cost";
-			currNode.innerHTML = someData[i + start].cost;
+			currNode.innerHTML = someData[i + start].cost + '$';
 			parNode.appendChild(currNode);
 			//
 			parNode = document.getElementsByClassName('card_description')[i]

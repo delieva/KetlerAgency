@@ -8,36 +8,44 @@
 </head>
 <body>
     <form action="/makeAdvert.html" method="post" enctype="multipart/form-data">
-        <label for="GET-name">Name:</label>
+        <label for="GET-name">Contact name:</label>
         <input id="GET-name" type="text" name="name">
-        <input type="checkbox" value="Rent" name="rent">
-        <input type="checkbox" value="Sale" name="sale">
-        <input type="number" name="rooms">
-        <input type="number" name="square">
-        <input id="1" type="text" name="city">
-        <input id="2" type="text" name="district">
-        <input id="3" type="text" name="address">
-        <input type="number" name="cost">
-        <input id="4" type="text" name="telephone">
-        <textarea name="description">Text about your object, that presents it</textarea>
+        <label for="Checkbox_rent">For rent</label>
+        <input id="Checkbox_rent" type="checkbox" value="Rent" name="rent">
+        <label for="Checkbox_sale">For sale</label>
+        <input id="Checkbox_sale" type="checkbox" value="Sale" name="sale">
+        <label for="num_of_rooms">Number of rooms:</label>
+        <input id="num_of_rooms" type="number" name="rooms">
+        <label for="square">Square</label>
+        <input id="square" type="number" name="square">
+        <label for="city">City:</label>
+        <input id="city" type="text" name="city">
+        <label for="district">District:</label>
+        <input id="district" type="text" name="district">
+        <label for="address">Address:</label>
+        <input id="address" type="text" name="address">
+        <label for="cost">Cost</label>
+        <input id="cost" type="number" name="cost">
+        <label for="telephone">Contact telephone</label>
+        <input id="telephone" type="text" name="telephone">
+        <label for="desription">Full description</label>
+        <textarea id="desription" name="description">Text about your object, that presents it</textarea>
         <input id="file" type="file" name="photo" multiple="multiple" accept="image/*,image/jpeg">
         <input type="submit">
     </form>
 <script>
-	var formData = new FormData();
+	let formData = new FormData();
 	document.getElementsByTagName('form')[0].addEventListener("submit", function() {
-		axios.post("./galery.html", {})
-			.then(function(res){
-				var imagefile = document.getElementById('file');
+		// axios.post("./galery.html", {})
+		// 	.then(function(res){
+				const imagefile = document.getElementById('file');
 				formData.append("image", imagefile.files[0]);
-				formData.append("hello", imagefile.files[0]);
-				console.log('bitch')
 				console.log(formData);
 				axios.post('/makeAdvert.html', formData, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
 					}
-				})
+				// })
 			})
 			.catch(function (err) {
 				console.log(err);

@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, 'media/AdvPhotos')
@@ -29,9 +28,10 @@ const storage = multer.diskStorage({
 
 var upload = multer({ storage: storage});
 
-let obj = JSON.parse(fs.readFileSync("AdvertsJSON/adverts.json"))
+let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"))
+let users = JSON.parse(fs.readFileSync("JSON/users.json"))
 
-app.set('port', (process.env.PORT || 8080));
+//app.set('port', (process.env.PORT || 8080));
 
 app.get('/*', (req, res)=>{ //creating method post which will work, when user click on download
 	console.log(req.url)
@@ -91,10 +91,17 @@ app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next
 	req.files.forEach((item) => {photoNames.push(`../media/AdvPhotos/${item.filename}`)})
 	req.body.photos = photoNames;
 	obj.push(req.body);
-	fs.writeFileSync('AdvertsJSON/adverts.json', JSON.stringify(obj), 'utf8');
-	console.log(obj)
+	//fs.writeFileSync('JSON/adverts.json', JSON.stringify(obj), 'utf8');
+	//console.log(obj)
 	// req.files - массив файлов `photos`
 	// req.body сохранит текстовые поля, если они будут
+});
+
+app.post('/signUp.html', function (req, res) {
+	//console.log(req.body);
+	users.push(req.body);
+	console.log(users)
+	//fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
 });
 
 

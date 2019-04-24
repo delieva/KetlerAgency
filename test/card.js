@@ -3,7 +3,7 @@
 
 const fs = require('fs');
 
-let obj = JSON.parse(fs.readFileSync("../AdvertsJSON/adverts.json"))
+let obj = JSON.parse(fs.readFileSync("../JSON/adverts.json"))
 console.log(obj)
 
 
