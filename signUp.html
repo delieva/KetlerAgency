@@ -4,29 +4,30 @@
     <meta charset="UTF-8">
     <title>Registration</title>
     <link rel="stylesheet" type="text/css" href="css/signUp.css">
+    <script src="axios.min.js"></script>
 </head>
 <body>
 
 <form action="/signUp.html" method="post">
     <label for="firstname">Firstname*</label>
-    <input id="firstname" type="text" name="firtname">
+    <input id="firstname" type="text" name="firtname" required>
     <label for="secondname">Lastname*</label>
-    <input id="secondname" type="text" name="secondname">
+    <input id="secondname" type="text" name="secondname" required>
     <label for="email">Email*</label>
-    <input id="email" type="text" name="email">
+    <input id="email" type="email" name="email" required>
     <label for="telephone">Telephone*</label>
-    <input id="telephone" type="text" name="telephone">
+    <input id="telephone" type="text" name="telephone" required>
     <label for="pass">Password*</label>
-    <input id="pass" type="text" name="pass">
+    <input id="pass" type="text" name="pass" required>
     <label for="checkpass">Confirm your password*</label>
-    <input id="checkpass" type="text" name="checkpass">
+    <input id="checkpass" type="text" name="checkpass" required>
     <label for="login">Login*</label>
-    <input id="login" type="text" name="login">
+    <input id="login" type="text" name="login" required>
     <input type="submit">
 </form>
 <div id="error">
 
 </div>
-<script src="signUp.js"></script>
+<script src="JS/signUp.js"></script>
 </body>
 </html>

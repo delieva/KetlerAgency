@@ -59,7 +59,6 @@ app.get('/*', (req, res)=>{ //creating method post which will work, when user cl
 				}
 				else if (req.method === 'POST' && req.url !== '/makeAdvert.html') {
 					res.end(JSON.stringify(obj), data);
-					console.log(req.url + 'fuuk')
 				}
 				else {
 					res.end(data);
@@ -90,6 +89,7 @@ app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next
 	let photoNames = [];
 	req.files.forEach((item) => {photoNames.push(`../media/AdvPhotos/${item.filename}`)})
 	req.body.photos = photoNames;
+	req.id = Date.now();
 	obj.push(req.body);
 	//fs.writeFileSync('JSON/adverts.json', JSON.stringify(obj), 'utf8');
 	//console.log(obj)
@@ -98,12 +98,46 @@ app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next
 });
 
 app.post('/signUp.html', function (req, res) {
-	//console.log(req.body);
-	users.push(req.body);
-	console.log(users)
-	//fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
+	
+	users.forEach((item) => {
+		if(item.login === req.body.login){
+			res.end("Sorry, user with this login already exists");
+		}
+		else if(item.email === req.body.email){
+			res.end("Sorry, user with this email already exists");
+		}
+		else if(item.telephone === req.body.telephone){
+			res.end("Sorry, user with this telephone already exists");
+		}
+	});
+	if(!res.end){
+		users.push(req.body);
+		console.log(users)
+	}
+	//res.end("so sad(")
+	// fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
 });
 
+
+app.post('/signIn.html', function (req, res) {
+	let sign = 0;
+	let log = 0;
+	users.forEach((item) => {
+		if(item.login === req.body.login){
+			log++;
+			if(item.pass === req.body.pass){
+				sign++;
+				res.end("we are winners");
+			}
+		}
+	});
+	if(!log){
+		res.end('Sorry, your login is wrong')
+	}
+	else if(!sign){
+		res.end('Sorry, your password is wrong')
+	}
+});
 
 
 
