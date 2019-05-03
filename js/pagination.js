@@ -214,14 +214,34 @@ function build_results(someData) {
 		//
 		parNode = document.getElementsByClassName('card_description')[i]
 		currNode = document.createElement('div');
-		currNode.className= "card_telephone ";
+		currNode.className= "card_id";
 		currNode.innerHTML = `ID: ${someData[i + start].id}`;
 		parNode.appendChild(currNode);
 	}
 }
 
-//window.addEventListener("load", function() {
-axios.post("./galery.html", {})
+window.addEventListener("load", function() {
+	axios.post("/loadUser", {})
+		.then(function(res){
+			if(res){
+				console.log('hi')
+				document.getElementsByClassName('menu')[0].innerHTML += res.data
+			}
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+	for(let i = 0; i < config.max_per_page; i++){
+		document.getElementsByClassName('card')[i].onclick = function(){
+			window.location.href = `http://localhost:8080/advert?advertId=${document.getElementsByClassName('card_id')[i].innerHTML}`
+		}
+	}
+	
+})
+
+
+
+axios.post("/galery.html", {})
 	.then(function(res){
 		let set = new Set();
 		res.data.forEach((obj) => {
@@ -276,3 +296,4 @@ document.getElementsByClassName("filter_button")[0].onclick = function(){
 			console.log(err);
 		});
 }
+

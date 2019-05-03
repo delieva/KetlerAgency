@@ -1,6 +1,6 @@
 /*Make the wrap #slides the same size as photos*/
 /*with setting the same aspect ratio(20x9)*/
-@media screen and (max-width: 760px){
+@media screen and (max-width: 800px){
     #slides{
         display: flex;
     }
@@ -41,7 +41,7 @@
 /*Inner div of a slider*/
 .slider_inside{
     position: center;
-    width: 80%;
+    width: 55em;
     z-index: 100000;
     margin: auto;
 }

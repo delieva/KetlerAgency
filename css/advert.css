@@ -23,7 +23,7 @@
 .advert_block{
     border: 1px solid black;
     /*margin: auto;*/
-    margin: 10%;
+    margin: 5% 10%;
     height: 30em;
     width: 80%;
     position: relative;
@@ -48,6 +48,44 @@
 
 .advert_block_information{
     height: 100%;
-    width: 20%;
-    display: inline-block;
+    width: 26%;
+    position: absolute;
+    right: 1%;
+}
+
+.information_part_title{
+    display: block;
+    font-weight: bolder;
+    margin-top: 0.5em;
+}
+
+.costed{
+    font-size: 1.5em;
+    color: black;
+    z-index: 1000;
+}
+
+.full_description{
+    width: 80%;
+    margin: auto;
+    font-size: 1.25em;
+}
+
+.button_want_to_see{
+    padding: 0.5em;
+    border-radius: 4px;
+    background-color: #d5e0df;
+    width: 5em;
+    margin-top: 1em;
+    font-size: 1.27em;
+    cursor: pointer;
+}
+
+.button_want_to_see:hover{
+    background-color: #81aaa7;
+    width: 5em;
+    margin-top: 1em;
+    font-size: 1.27em;
+    cursor: pointer;
+    color: white;
 }

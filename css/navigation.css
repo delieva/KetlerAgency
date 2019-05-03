@@ -50,3 +50,18 @@
     display: inline-block;
     font-size: 4em;
 }
+
+#user_block{
+    display: inline-block;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+#user_block a{
+    text-decoration: none;
+    color: black;
+}
+#user_block a:hover{
+    text-decoration: underline;
+    color: #673f0f;
+}

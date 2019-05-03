@@ -8,14 +8,11 @@ const telephone = document.getElementById('telephone');
 const fname = document.getElementById('firstname');
 const sname = document.getElementById('secondname');
 const login = document.getElementById('login');
+const submit = document.getElementById('submit')
 
 
-form.addEventListener("submit", function (event) {
+submit.addEventListener("click", function (event) {
 	//validation of the input information from user
-	event.preventDefault();
-	console.log(email.value)
-	console.log(email.validity.valid)
-	
 	if (!email.validity.valid) {
 		error.innerHTML = "Ivalid email!";
 		error.className = "error active";
@@ -38,7 +35,6 @@ form.addEventListener("submit", function (event) {
 		event.preventDefault();
 	}
 	else{
-		event.preventDefault();
 		
 		let bodyFormData = {};
 		bodyFormData.firstname  = fname.value;
@@ -47,7 +43,6 @@ form.addEventListener("submit", function (event) {
 		bodyFormData.password   = pass.value;
 		bodyFormData.login      = login.value;
 		bodyFormData.telephone = telephone.value;
-		console.log(bodyFormData);
 		axios({
 			method: 'post',
 			url: '/signUp.html',
@@ -56,15 +51,13 @@ form.addEventListener("submit", function (event) {
 		})
 		
 		.then(function (response) {
-			console.log(response)
 			if(response.data.startsWith('Sorry')){
 				document.getElementById('error').innerHTML = response.data;
 			}
 			else{
-				console.log('we are winners')
+				window.location.href = "http://localhost:8080";
 			}
 			console.log(response);
-			
 		})
 		.catch(function (error) {
 			console.log(error);

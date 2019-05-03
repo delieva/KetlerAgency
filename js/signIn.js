@@ -21,7 +21,6 @@ form.addEventListener("submit", function (event) {
 					document.getElementById('error').innerHTML = response.data;
 				}
 				else{
-					console.log('we are winners')
 					window.location.href = "http://localhost:8080/"
 				}
 				console.log(response);
