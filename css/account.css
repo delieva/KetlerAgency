@@ -1,0 +1,17 @@
+.account_wrapper{
+    width: 80%;
+    margin: auto;
+}
+.account_info{
+    display: inline-block;
+    height: 100%;
+}
+
+.account_icon{
+    height: 10em;
+    width: auto;
+}
+.account_info_part{
+    font-size: 1.5em;
+    margin: 0 0 0.3em 2em;
+}

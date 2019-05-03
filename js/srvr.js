@@ -48,7 +48,7 @@ const storage = multer.diskStorage({
 	filename: function (req, file, cb) {
 		let ext = file.originalname;
 		let i = ext.lastIndexOf('.');
-		ext = ext.substr(i+1, ext.length)
+		ext = ext.substr(i+1, ext.length);
 		cb(null, `${Date.now()}.${ext}`)
 	}
 })
@@ -65,11 +65,42 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage});
 
-let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"))
-let users = JSON.parse(fs.readFileSync("JSON/users.json"))
+let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
+let users = JSON.parse(fs.readFileSync("JSON/users.json"));
 
 app.get('/account', checkLoginBefore, (req, res) => {
-	res.send('You are in!')
+	res.sendFile('account.html', { root: '.' })
+});
+
+app.post('/get_user_acc', (req, res) => {
+	users.forEach((item) => {
+		console.log('wat')
+		if(item.userId === req.session.userId){
+			res.send(item)
+		}
+	});
+});
+
+app.post('/get_user_adverts', (req, res) => {
+	let arr = [];
+	
+	obj.forEach((item) => {
+		if(item.userId === req.session.userId){
+			arr.push(item)
+		}
+	});
+	res.send(arr)
+});
+
+app.post('/get_user_reviews', (req, res) => {
+	let arr = [];
+	let forReview = JSON.parse(fs.readFileSync("JSON/for_review.json"));
+	forReview.forEach((item) => {
+		if(item.wantReview === req.session.userId){
+			arr.push(item)
+		}
+	});
+	res.send(arr)
 });
 
 app.get('/logout', checkLoginBefore, (req, res) => {
@@ -108,12 +139,11 @@ app.post('/for_review', (req, res) => {
 	obj.forEach((item) => {
 		if(item.id === req.body.id){
 			if(req.body.telephone){
-				console.log(req.body.telephone)
+				console.log(req.body.telephone);
 				
 				item.wantReview = req.body.telephone;
 			}
 			else{
-				console.log('2')
 				item.wantReview = req.session.userId;
 			}
 			forReview.push(item);
@@ -200,7 +230,7 @@ app.post('/signUp.html', function (req, res) {
 		users.push(req.body);
 		req.session.userId = newId;
 		res.end("so sad(")
-		// fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
+		fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
 	}
 });
 

@@ -6,7 +6,7 @@ const pass = document.getElementById('pass');
 const checkpass = document.getElementById('checkpass');
 const telephone = document.getElementById('telephone');
 const fname = document.getElementById('firstname');
-const sname = document.getElementById('secondname');
+const lname = document.getElementById('lastname');
 const login = document.getElementById('login');
 const submit = document.getElementById('submit')
 
@@ -38,7 +38,7 @@ submit.addEventListener("click", function (event) {
 		
 		let bodyFormData = {};
 		bodyFormData.firstname  = fname.value;
-		bodyFormData.secondname = sname.value;
+		bodyFormData.lastname = sname.value;
 		bodyFormData.email      = email.value;
 		bodyFormData.password   = pass.value;
 		bodyFormData.login      = login.value;
