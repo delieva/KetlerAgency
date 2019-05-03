@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin</title>
+    <script src="axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
 </head>
 <body>
+<div class="account_preadverts_wrapper">
+    <div class="account_preadverts_header">Preadverts</div>
+</div>
+<div class="account_reviews_wrapper">
+    <div class="account_reviews_header">Want to review</div>
+</div>
+<script src="js/adminAcc.js">
 
+
+	for(let i = 0; i < document.getElementsByClassName('card').length; i++){
+		document.getElementsByClassName('card')[i].onclick = function(){
+			let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf(' ');
+			let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start+1);
+			window.location.href = `http://localhost:8080/advert?advertId=${id}`
+		}
+	}
+</script>
 </body>
 </html>

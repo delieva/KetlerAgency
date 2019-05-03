@@ -132,6 +132,7 @@ function update_page(someData){
 
 //Building navigation bar
 function build_nav() {
+	let page_nav = '';
 	for(let i = 1; i <= nOfPages; i++ ){
 		if(i === 1 || i === nOfPages || i-1 === config.page || i+1 === config.page || i === config.page){
 			if(i === config.page){
@@ -226,7 +227,7 @@ window.addEventListener("load", function() {
 		.catch(function (err) {
 			console.log(err);
 		});
-	for(let i = 0; i < config.max_per_page; i++){
+	for(let i = 0; i < document.getElementsByClassName('card').length; i++){
 		document.getElementsByClassName('card')[i].onclick = function(){
 			let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf(' ');
 			let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start+1);

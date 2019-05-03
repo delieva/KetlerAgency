@@ -43,7 +43,7 @@ function checkLoginAfter(req, res, next) {
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, 'media/AdvPhotos')
+		cb(null, 'media/preAdvPhotos')
 	},
 	filename: function (req, file, cb) {
 		let ext = file.originalname;
@@ -135,16 +135,22 @@ app.post('/advert', (req, res) => {
 
 app.post('/for_review', (req, res) => {
 	let forReview = JSON.parse(fs.readFileSync("JSON/for_review.json"));
-	console.log(req.session)
 	obj.forEach((item) => {
 		if(item.id === req.body.id){
 			if(req.body.telephone){
-				console.log(req.body.telephone);
+				// console.log(req.body.telephone);
 				
 				item.wantReview = req.body.telephone;
 			}
 			else{
-				item.wantReview = req.session.userId;
+				let user = users.find(function(itm){
+					console.log(itm)
+					if(itm.userId === req.session.userId){
+						return itm;
+					}
+				});
+				console.log(user);
+				item.wantReview = user.telephone;
 			}
 			forReview.push(item);
 			res.end('')
@@ -164,6 +170,29 @@ app.get('/signup', checkLoginAfter, (req, res) => {
 app.get('/*', function(req, res) {
 	res.sendFile(req.url.substring(1), { root: '.' })
 });
+
+
+
+
+
+app.post('/get_preadverts', (req, res) => {
+	let preadverts = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
+	console.log(preadverts)
+	res.send(preadverts);
+	
+});
+
+
+
+
+app.post('/get_wantreviews', (req, res) => {
+	let forReview = JSON.parse(fs.readFileSync("JSON/for_review.json"));
+	res.send(forReview)
+});
+
+
+
+
 
 
 
@@ -198,12 +227,13 @@ app.post('/galery.html', function(req, res){
 
 
 app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next) {
+	let preAdv = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
 	let photoNames = [];
-	req.files.forEach((item) => {photoNames.push(`../media/AdvPhotos/${item.filename}`)})
+	req.files.forEach((item) => {photoNames.push(`../media/preAdvPhotos/${item.filename}`)})
 	req.body.photos = photoNames;
 	req.id = Date.now();
-	obj.push(req.body);
-	//fs.writeFileSync('JSON/adverts.json', JSON.stringify(obj), 'utf8');
+	preAdv.push(req.body);
+	fs.writeFileSync('JSON/preadverts.json', JSON.stringify(preAdv), 'utf8');
 	// req.files - массив файлов `photos`
 	// req.body сохранит текстовые поля, если они будут
 });
@@ -259,4 +289,37 @@ app.post('/signIn.html', function (req, res) {
 	}
 });
 
+app.post('/add_advert', function(req, res){
+	let preAdv = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
+	console.log('nonono');
+	const num = req.body.num;
+	console.log(preAdv);
+	let newPhotos = [];
+	preAdv[num].photos.forEach((item) => {
+		const oldPath = item.substr(3);
+		const newPath = item.replace('preAdvPhotos', 'AdvPhotos').substr(3);
+		newPhotos.push(item.replace('preAdvPhotos', 'AdvPhotos'));
+		// fs.copyFile(oldPath, newPath, (err) => {
+		// 	if (err) throw err;
+		// 	console.log('source.txt was copied to destination.txt');
+		// });
+		
+		let file = fs.readFileSync(oldPath);
+		fs.writeFileSync(newPath, file, 'utf8');
+		fs.unlinkSync(oldPath);
+	});
+	preAdv[num].id = Date.now()
+	preAdv[num].photos = newPhotos;
+	obj.push(preAdv[num]);
+	fs.writeFileSync('JSON/adverts.json', JSON.stringify(obj), 'utf8');
+	
+	preAdv.splice(req.body.num, 1)
+	fs.writeFileSync('JSON/preadverts.json', JSON.stringify(preAdv), 'utf8');
+	
+});
 
+app.post('remove_advert', function(req, res){
+	let preAdv = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
+	preAdv.splice(res.body.num, 1)
+	fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
+});
