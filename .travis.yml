@@ -9,7 +9,7 @@ before_install:
 before_deploy: npm install now --no-save # Install Now CLI on Travis
 
 script:
-  - npx now --token $nowtoken && npx now --token $nowtoken alias deliieva-$TRAVIS_BRANCH.now.sh
+  - npx now --token R1YbbjbJ1qM5MF3GZOgNWv8R && npx now --token R1YbbjbJ1qM5MF3GZOgNWv8R alias deliieva-$TRAVIS_BRANCH.now.sh
 
 
 #deploy:
