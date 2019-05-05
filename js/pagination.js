@@ -237,31 +237,53 @@ function build_results(someData) {
 }
 
 
-const start = window.location.href.lastIndexOf('?');
+const start = (window.location.href.lastIndexOf('?') === -1) ? window.location.href.length - 1 : (window.location.href.lastIndexOf('?'));
 const param = (window.location.href.substr(start+1) === "sell" || window.location.href.substr(start+1) === "rent") ? window.location.href.substr(start+1) : null;
+let search_word = null;
+if(!param){
+	search_word = window.location.href.substr(start+1)
+}
 
-axios.post("/galery.html", {
-	type: param
-})
-	.then(function(res){
-		let set = new Set();
-		console.log(res.data)
-		res.data.forEach((obj) => {
-			set.add(obj.city)
-		})
-		for(let item of set){
-			let parNode  = document.getElementById('filter_city');
-			let currNode = document.createElement('option');
-			currNode.innerText = item;
-			currNode.className= "filter_city_option";
-			parNode.appendChild(currNode);
-		}
-		changeConfigs(res.data);
-		init(res.data);
+if(search_word){
+	axios.post("/search", {
+		search_word: search_word
 	})
-	.catch(function (err) {
-		console.log(err);
-	});
+		.then(function(res){
+			if(res){
+				changeConfigs(res.data);
+				init(res.data);
+			}
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}
+else{
+	axios.post("/gallery", {
+		type: param
+	})
+		.then(function(res){
+			let set = new Set();
+			console.log(res.data)
+			res.data.forEach((obj) => {
+				set.add(obj.city)
+			})
+			for(let item of set){
+				let parNode  = document.getElementById('filter_city');
+				let currNode = document.createElement('option');
+				currNode.innerText = item;
+				currNode.className= "filter_city_option";
+				parNode.appendChild(currNode);
+			}
+			changeConfigs(res.data);
+			init(res.data);
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}
+
+
 //});
 
 // document.getElementById('filter_type').onchange = function(){

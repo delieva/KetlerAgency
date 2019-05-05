@@ -65,3 +65,22 @@
     text-decoration: underline;
     color: #673f0f;
 }
+.search{
+    display: inline-block;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+.input_search{
+    height: 1.2em;
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+.button_search{
+    display: inline-block;
+    padding: 0.3em 0.5em;
+    border-radius: 4px;
+    background-color: #81aaa7;
+    font-size: 1.27em;
+    cursor: pointer;
+}

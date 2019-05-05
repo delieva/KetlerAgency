@@ -1,5 +1,5 @@
-let arr = [1, 2, 3]
+let arr = "Hii"
 
-arr.splice(0, 1);
 
-console.log(arr);
+console.log(arr.indexOf('hi'));
+

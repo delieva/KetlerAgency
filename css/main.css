@@ -5,6 +5,12 @@
 body{
     margin: 0;
 }
+
 .text{
     font-family: "Big Caslon";
 }
+
+/*body{*/
+    /*background-image: linear-gradient(to top, rgba(43, 52, 60, 0.9) 0%, rgba(104, 131, 139, 0.9) 15%, rgba(186, 223, 231, 0.9) 39%, rgba(186, 223, 231, 0.3) 57%, rgba(186, 223, 231, 0.1) 57%, rgba(255, 255, 255, 0) 68%);*/
+/*}*/
+

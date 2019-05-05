@@ -9,7 +9,7 @@
     <script src="axios.min.js"></script>
 </head>
 <body>
-    <header class="head ">
+<header class="head ">
     <div class="logo text">
         <img src="media/K.png">
         <div>etler.</div>
@@ -29,8 +29,8 @@
             </li>
         </ul>
         <div class="search">
-            <input class="input_search" type="text" value="Search">
-            <button class="button_search"><i class="fas fa-search"></i></button>
+            <input class="input_search" type="text" placeholder="Search">
+            <div class="button_search"><i class="fas fa-search"></i></div>
         </div>
         <div class="wrapper_burger">
             <input type="checkbox" id="check-menu">
@@ -60,6 +60,14 @@
         <img class="slide" src="media/doma.jpg" alt="My photo">
         <!--<img class="slide" src="media/Kryukovshhine11.jpg" alt="My photo">-->
     </div>
+<footer class="footer">
+    <div class="footer_logo_cover">
+        <img src="media/K.png" alt="">
+    </div>
+    <a href="#"
+       onclick="this.href='http://www.facebook.com/share.php?u='+window.location.href+window.location.hash">
+        Добавить в Facebook</a>
+</footer>
     <script>
 		let slides = document.querySelectorAll('#slides .slide');
 		let currentSlide = 0;

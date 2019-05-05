@@ -237,7 +237,7 @@ app.listen(8080);
 // 		return someData;
 // 	}
 // }
-app.post('/galery.html', function(req, res){
+app.post('/gallery', function(req, res){
 	let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
 	function filter_by_type(value){
 		return value.type === req.body.type;
@@ -375,11 +375,30 @@ app.post('/remove_existing_advert', function(req, res){
 	res.end('OK')
 });
 
-app.post('search', function (req, res) {
+app.post('/search', function (req, res) {
 	let arr = [];
 	let adverts = JSON.parse(fs.readFileSync("JSON/adverts.json"));
+	let city,
+		distr,
+		addr,
+		search = req.body.search_word.toLowerCase();
 	adverts.forEach((item) => {
-		if(item.city.indexOf(req.body.search_word) !== -1 || item.district.indexOf(req.body.search_word) !== -1 || item.address.indexOf(req.body.search_word) !== -1){
+		city = item.city.toLowerCase();
+		distr = item.district.toLowerCase();
+		addr = item.address.toLowerCase();
+		if(city.indexOf(search) !== -1){ //|| distr.indexOf(search) !== -1 || addr.indexOf(search) !== -1){
+			console.log(city);
+			console.log(search+1);
+			arr.push(item);
+		}
+		else if(distr.indexOf(search) !== -1){
+			console.log(distr);
+			console.log(search+1);
+			arr.push(item);
+		}
+		else if(addr.indexOf(search) !== -1){
+			console.log(addr);
+			console.log(search+1);
 			arr.push(item);
 		}
 	});

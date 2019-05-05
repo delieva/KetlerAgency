@@ -15,15 +15,15 @@ window.addEventListener("load", function() {
 })
 
 document.getElementsByClassName('button_search')[0].onclick = function () {
-	axios.post("/search", {
-		search_word: document.getElementsByClassName('input_search')[0]
-	})
-		.then(function(res){
-			if(res){
-				window.location.href = "http://localhost:8080/gallery"
-			}
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
+	// axios.post("/search", {
+	// 	search_word: document.getElementsByClassName('input_search')[0]
+	// })
+	// 	.then(function(res){
+	// 		if(res){
+				window.location.href = `http://localhost:8080/gallery?${document.getElementsByClassName('input_search')[0].value}`
+		// 	}
+		// })
+		// .catch(function (err) {
+		// 	console.log(err);
+		// });
 }

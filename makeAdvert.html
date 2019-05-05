@@ -4,36 +4,108 @@
     <meta charset="UTF-8">
     <title>Make Advert</title>
     <link rel="stylesheet" type="text/css" href="css/makeAdvert.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="axios.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
-    <form action="/makeAdvert.html" method="post" enctype="multipart/form-data">
-        <label for="GET-name">Contact name:</label>
-        <input id="GET-name" type="text" name="name">
-        <label for="Checkbox_rent">For rent</label>
-        <input id="Checkbox_rent" type="checkbox" value="Rent" name="type">
-        <label for="Checkbox_sale">For sale</label>
-        <input id="Checkbox_sale" type="checkbox" value="Sale" name="type">
-        <label for="num_of_rooms">Number of rooms:</label>
-        <input id="num_of_rooms" type="number" name="rooms">
-        <label for="square">Square</label>
-        <input id="square" type="number" name="square">
-        <label for="city">City:</label>
-        <input id="city" type="text" name="city">
-        <label for="district">District:</label>
-        <input id="district" type="text" name="district">
-        <label for="address">Address:</label>
-        <input id="address" type="text" name="address">
-        <label for="cost">Cost</label>
-        <input id="cost" type="number" name="cost">
-        <label for="telephone">Contact telephone</label>
-        <input id="telephone" type="text" name="telephone">
-        <label for="full_desription">Full description</label>
-        <textarea id="full_desription" name="full_description">Text about your object, that presents it</textarea>
-        <input id="file" type="file" name="photo" multiple="multiple" accept="image/*,image/jpeg">
-        <input type="submit">
+<header class="head ">
+    <div class="logo text">
+        <img src="media/K.png">
+        <div>etler.</div>
+    </div>
+    <nav id="navigation">
+        <ul class="menu" >
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/gallery?sell">Buy</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/gallery?rent">Rent</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/makeAdvert.html">Sell</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">Agency</a>
+                <!--<ul class="subsub_menu">-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">About</a></li>-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">Servises</a></li>-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">Feedback</a></li>-->
+                <!--</ul>-->
+            </li>
+        </ul>
+        <div class="search">
+            <input class="input_search" type="text" placeholder="Search">
+            <div class="button_search"><i class="fas fa-search"></i></div>
+        </div>
+        <div class="wrapper_burger">
+            <input type="checkbox" id="check-menu">
+            <label for="check-menu"></label>
+            <div class="burger-line first"></div>
+            <div class="burger-line second"></div>
+            <div class="burger-line third"></div>
+            <div class="burger-line fourth"></div>
+            <nav class="burger-menu">
+            </nav>
+        </div>
+    </nav>
+</header>
+    <form action="/makeAdvert.html" method="post" enctype="multipart/form-data" class="form">
+        <div class="form_part">
+            <label for="GET-name">Contact name:</label>
+            <input id="GET-name" type="text" name="name">
+        </div>
+
+        <div class="form_part">
+            <label for="Checkbox_rent">For rent</label>
+            <input id="Checkbox_rent" type="checkbox" value="Rent" name="type">
+        </div>
+
+        <div class="form_part">
+            <label for="Checkbox_sale">For sale</label>
+            <input id="Checkbox_sale" type="checkbox" value="Sale" name="type">
+        </div>
+
+        <div class="form_part">
+            <label for="num_of_rooms">Number of rooms:</label>
+            <input id="num_of_rooms" type="number" name="rooms">
+        </div>
+
+        <div class="form_part">
+            <label for="square">Square</label>
+            <input id="square" type="number" name="square">
+        </div>
+
+        <div class="form_part">
+            <label for="city">City:</label>
+            <input id="city" type="text" name="city">
+        </div>
+
+        <div class="form_part">
+            <label for="district">District:</label>
+            <input id="district" type="text" name="district">
+        </div>
+
+        <div class="form_part">
+            <label for="address">Address:</label>
+            <input id="address" type="text" name="address">
+        </div>
+
+        <div class="form_part">
+            <label for="cost">Cost</label>
+            <input id="cost" type="number" name="cost">
+        </div>
+
+        <div class="form_part">
+            <label for="telephone">Contact telephone</label>
+            <input id="telephone" type="text" name="telephone">
+        </div>
+
+        <div class="form_part">
+            <label for="full_desription">Full description</label>
+            <textarea id="full_desription" name="full_description" placeholder="Text about your object, that presents it"></textarea>
+        </div>
+
+        <div class="form_part">
+            <input id="file" type="file" name="photo" multiple="multiple" accept="image/*,image/jpeg">
+        </div>
+        <input type="submit" value="Submit" class="submit_form_button">
     </form>
+<script src="js/navigation.js"></script>
 <script>
 	let formData = new FormData();
 	document.getElementsByTagName('form')[0].addEventListener("submit", function() {
