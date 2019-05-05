@@ -1,7 +1,7 @@
 {
   "name": "Ketler",
   "version": 2,
-  "builds": [{ "src": "index.js", "use": "@now/node" }],
+  "builds": [{ "src": "srvr.js", "use": "@now/node" }],
   "alias": "deliieva",
   "routes": [
     { "src": "/(.*)", "dest": "/index.js" }
