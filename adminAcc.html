@@ -14,16 +14,17 @@
 <div class="account_reviews_wrapper">
     <div class="account_reviews_header">Want to review</div>
 </div>
-<script src="js/adminAcc.js">
-
-
-	for(let i = 0; i < document.getElementsByClassName('card').length; i++){
-		document.getElementsByClassName('card')[i].onclick = function(){
-			let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf(' ');
-			let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start+1);
-			window.location.href = `http://localhost:8080/advert?advertId=${id}`
-		}
-	}
+<script src="js/adminAcc.js"></script>
+<script src="js/navigation.js"></script>
+<script>
+	// for(let i = 0; i < document.getElementsByClassName('card').length; i++){
+	// 	document.getElementsByClassName('card')[i].onclick = function(){
+	// 		let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf(' ');
+	// 		let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start+1);
+	// 		window.location.href = `http://localhost:8080/advert?advertId=${id}`
+	// 	}
+	// }
 </script>
+
 </body>
 </html>

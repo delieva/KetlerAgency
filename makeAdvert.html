@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <title>Make Advert</title>
     <link rel="stylesheet" type="text/css" href="css/makeAdvert.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="axios.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
     <form action="/makeAdvert.html" method="post" enctype="multipart/form-data">
         <label for="GET-name">Contact name:</label>
         <input id="GET-name" type="text" name="name">
         <label for="Checkbox_rent">For rent</label>
-        <input id="Checkbox_rent" type="checkbox" value="Rent" name="rent">
+        <input id="Checkbox_rent" type="checkbox" value="Rent" name="type">
         <label for="Checkbox_sale">For sale</label>
-        <input id="Checkbox_sale" type="checkbox" value="Sale" name="sale">
+        <input id="Checkbox_sale" type="checkbox" value="Sale" name="type">
         <label for="num_of_rooms">Number of rooms:</label>
         <input id="num_of_rooms" type="number" name="rooms">
         <label for="square">Square</label>
@@ -28,8 +29,8 @@
         <input id="cost" type="number" name="cost">
         <label for="telephone">Contact telephone</label>
         <input id="telephone" type="text" name="telephone">
-        <label for="desription">Full description</label>
-        <textarea id="desription" name="description">Text about your object, that presents it</textarea>
+        <label for="full_desription">Full description</label>
+        <textarea id="full_desription" name="full_description">Text about your object, that presents it</textarea>
         <input id="file" type="file" name="photo" multiple="multiple" accept="image/*,image/jpeg">
         <input type="submit">
     </form>

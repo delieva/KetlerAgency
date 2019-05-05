@@ -1,13 +1,10 @@
-'use strict'
+'use strict';
 
-const http = require('http');
-const fs = require('fs')
-const url = require('url');
-const express = require('express')
-const mime = require('mime-types')
+const fs = require('fs');
+const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const multer  = require('multer')
+const multer  = require('multer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -53,20 +50,8 @@ const storage = multer.diskStorage({
 	}
 })
 
-
-
-
-
-
-
-
-
-
-
 const upload = multer({ storage: storage});
 
-let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
-let users = JSON.parse(fs.readFileSync("JSON/users.json"));
 
 app.get('/account', checkLoginBefore, (req, res) => {
 	res.sendFile('account.html', { root: '.' })
@@ -74,7 +59,6 @@ app.get('/account', checkLoginBefore, (req, res) => {
 
 app.post('/get_user_acc', (req, res) => {
 	users.forEach((item) => {
-		console.log('wat')
 		if(item.userId === req.session.userId){
 			res.send(item)
 		}
@@ -82,6 +66,7 @@ app.post('/get_user_acc', (req, res) => {
 });
 
 app.post('/get_user_adverts', (req, res) => {
+	let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
 	let arr = [];
 	
 	obj.forEach((item) => {
@@ -113,7 +98,7 @@ app.get('/logout', checkLoginBefore, (req, res) => {
 	})
 });
 
-app.get('/gallery', (req, res) => {
+app.get('/gallery*', (req, res) => {
 	res.sendFile('galery.html', { root: '.' })
 });
 
@@ -126,6 +111,7 @@ app.get('/advert*', (req, res) => {
 });
 
 app.post('/advert', (req, res) => {
+	let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
 	obj.forEach((item) => {
 		if(item.id === req.body.id){
 			res.send(item)
@@ -134,22 +120,22 @@ app.post('/advert', (req, res) => {
 });
 
 app.post('/for_review', (req, res) => {
+	let users = JSON.parse(fs.readFileSync("JSON/users.json"));
+	let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
 	let forReview = JSON.parse(fs.readFileSync("JSON/for_review.json"));
 	obj.forEach((item) => {
 		if(item.id === req.body.id){
 			if(req.body.telephone){
-				// console.log(req.body.telephone);
-				
 				item.wantReview = req.body.telephone;
 			}
 			else{
 				let user = users.find(function(itm){
-					console.log(itm)
+					// console.log(itm)
 					if(itm.userId === req.session.userId){
 						return itm;
 					}
 				});
-				console.log(user);
+				// console.log(user);
 				item.wantReview = user.telephone;
 			}
 			forReview.push(item);
@@ -177,7 +163,6 @@ app.get('/*', function(req, res) {
 
 app.post('/get_preadverts', (req, res) => {
 	let preadverts = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
-	console.log(preadverts)
 	res.send(preadverts);
 	
 });
@@ -206,24 +191,62 @@ app.post('/get_wantreviews', (req, res) => {
 
 app.post('/loadUser', function(req, res){
 	if (!req.session.userId) {
-		res.send(
-			`<li class="sub_menu"><a id="login_logout" href="/login"><i class="fas fa-sign-in-alt"></i>&#160;Login</a></li>
-             <li class="sub_menu"><a id="signup" href="/signup"><i class="fas fa-plus"></i>&#160;Register</a></li>`
+		res.send({
+				html: `<li class="sub_menu"><a id="login_logout" href="/login"><i class="fas fa-sign-in-alt"></i>&#160;Login</a></li>
+             	<li class="sub_menu"><a id="signup" href="/signup"><i class="fas fa-plus"></i>&#160;Register</a></li>`
+			}
+			
 		)
 	}
 	else{
-		res.send(
-			`<li class="sub_menu"><a id="user_home_link" class="text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
-        	<li class="sub_menu"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`
+		res.send({
+				html: `<li class="sub_menu"><a id="user_home_link" class="text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
+        			<li class="sub_menu"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
+				id: req.session.userId
+			}
+		
 		)
 	}
 });
 
 app.listen(8080);
 
+// function filter_by_district(value){
+// 	return value.district === req.body.district;
+// }
+//
+// function filter_by_city(value){
+// 	return value.city === res.body.city;
+// }
+//
+
+//
+// function filter(someData, city, district, type) {
+// 	if(type){
+// 		someData = someData.filter(filter_by_type)
+// 	}
+// 	if(city){
+// 		let sdata = someData.filter(filter_by_city);
+// 		if(district){
+// 			sdata = sdata.filter(filter_by_district);
+// 			return sdata
+// 		}
+// 		return sdata;
+// 	}
+// 	else{
+// 		return someData;
+// 	}
+// }
 app.post('/galery.html', function(req, res){
-	res.end(JSON.stringify(obj));
-})
+	let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
+	function filter_by_type(value){
+		return value.type === req.body.type;
+	}
+	if(req.body.type){
+		obj = obj.filter(filter_by_type);
+	}
+	res.send(obj);
+});
 
 
 app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next) {
@@ -231,7 +254,7 @@ app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next
 	let photoNames = [];
 	req.files.forEach((item) => {photoNames.push(`../media/preAdvPhotos/${item.filename}`)})
 	req.body.photos = photoNames;
-	req.id = Date.now();
+	//req.id = Date.now();
 	preAdv.push(req.body);
 	fs.writeFileSync('JSON/preadverts.json', JSON.stringify(preAdv), 'utf8');
 	// req.files - массив файлов `photos`
@@ -239,6 +262,7 @@ app.post('/makeAdvert.html', upload.array('photo', 12), function (req, res, next
 });
 
 app.post('/signUp.html', function (req, res) {
+	let users = JSON.parse(fs.readFileSync("JSON/users.json"));
 	let out = 0;
 	users.forEach((item) => {
 		if(item.login === req.body.login){
@@ -255,7 +279,7 @@ app.post('/signUp.html', function (req, res) {
 		}
 	});
 	if(out === 0){
-		const newId = Date.now();
+		const newId = String(Date.now());
 		req.body.userId = newId;
 		users.push(req.body);
 		req.session.userId = newId;
@@ -266,6 +290,7 @@ app.post('/signUp.html', function (req, res) {
 
 
 app.post('/signIn.html', function (req, res) {
+	let users = JSON.parse(fs.readFileSync("JSON/users.json"));
 	let sign = 0;
 	let log = 0;
 	users.forEach((item) => {
@@ -273,9 +298,6 @@ app.post('/signIn.html', function (req, res) {
 			log++;
 			if(item.password === req.body.password){
 				sign++;
-				// req.session.regenerate(function(err) {
-				// 	// will have a new session here
-				// })
 				req.session.userId = item.userId;
 				res.end("we are winners");
 			}
@@ -290,36 +312,76 @@ app.post('/signIn.html', function (req, res) {
 });
 
 app.post('/add_advert', function(req, res){
+	let obj = JSON.parse(fs.readFileSync("JSON/adverts.json"));
 	let preAdv = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
-	console.log('nonono');
 	const num = req.body.num;
-	console.log(preAdv);
 	let newPhotos = [];
 	preAdv[num].photos.forEach((item) => {
 		const oldPath = item.substr(3);
 		const newPath = item.replace('preAdvPhotos', 'AdvPhotos').substr(3);
 		newPhotos.push(item.replace('preAdvPhotos', 'AdvPhotos'));
-		// fs.copyFile(oldPath, newPath, (err) => {
-		// 	if (err) throw err;
-		// 	console.log('source.txt was copied to destination.txt');
-		// });
-		
 		let file = fs.readFileSync(oldPath);
 		fs.writeFileSync(newPath, file, 'utf8');
 		fs.unlinkSync(oldPath);
 	});
-	preAdv[num].id = Date.now()
+	preAdv[num].id = String(Date.now());
 	preAdv[num].photos = newPhotos;
 	obj.push(preAdv[num]);
 	fs.writeFileSync('JSON/adverts.json', JSON.stringify(obj), 'utf8');
-	
-	preAdv.splice(req.body.num, 1)
+	preAdv.splice(req.body.num, 1);
 	fs.writeFileSync('JSON/preadverts.json', JSON.stringify(preAdv), 'utf8');
-	
+	res.end('OK')
 });
 
-app.post('remove_advert', function(req, res){
+app.post('/remove_advert', function(req, res){
 	let preAdv = JSON.parse(fs.readFileSync("JSON/preadverts.json"));
-	preAdv.splice(res.body.num, 1)
-	fs.writeFileSync('JSON/users.json', JSON.stringify(users), 'utf8');
+	const num = req.body.num;
+	preAdv[num].photos.forEach((item) => {
+		const oldPath = item.substr(3);
+		try{
+			fs.unlinkSync(oldPath);
+		}
+		catch (e) {
+			console.log(e)
+		}
+	});
+	preAdv.splice(num, 1);
+	fs.writeFileSync('JSON/preadverts.json', JSON.stringify(preAdv), 'utf8');
+	res.end('OK')
+});
+
+app.post('/remove_review', function(req, res){
+	let freview = JSON.parse(fs.readFileSync("JSON/for_review.json"));
+	const num = req.body.num;
+	freview.splice(num, 1);
+	fs.writeFileSync('JSON/for_review.json', JSON.stringify(freview), 'utf8');
+	res.end('OK')
+});
+
+app.post('/remove_existing_advert', function(req, res){
+	let adverts = JSON.parse(fs.readFileSync("JSON/adverts.json"));
+	const num = req.body.id;
+	adverts.forEach((item, i) => {
+		if(item.id === num){
+			item.photos.forEach((item) => {
+				const oldPath = item.substr(3);
+				fs.unlinkSync(oldPath);
+			});
+			adverts.splice(i, 1);
+		}
+	});
+	
+	fs.writeFileSync('JSON/adverts.json', JSON.stringify(adverts), 'utf8');
+	res.end('OK')
+});
+
+app.post('search', function (req, res) {
+	let arr = [];
+	let adverts = JSON.parse(fs.readFileSync("JSON/adverts.json"));
+	adverts.forEach((item) => {
+		if(item.city.indexOf(req.body.search_word) !== -1 || item.district.indexOf(req.body.search_word) !== -1 || item.address.indexOf(req.body.search_word) !== -1){
+			arr.push(item);
+		}
+	});
+	res.send(arr);
 });

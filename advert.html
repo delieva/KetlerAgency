@@ -5,7 +5,8 @@
     <title>Advert</title>
     <link rel="stylesheet" type="text/css" href="css/advert.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="axios.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 <header class="head">
@@ -15,16 +16,16 @@
     </div>
     <nav id="navigation">
         <ul class="menu" >
-            <li class="sub_menu"><a class="text" href="#greeting">Buy</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/gallery?sell">Buy</a></li>
             <!--<li class="sub_menu">-->
             <!--<a class="text" href="#skills">Skills</a>-->
             <!--<ul class="subsub_menu">-->
             <!--</ul>-->
             <!--</li>-->
-            <li class="sub_menu"><a class="text" href="#connect">Rent</a></li>
-            <li class="sub_menu"><a class="text" href="#connect">Sell</a></li>
-            <li class="sub_menu"><a class="text" href="#connect">About agency</a></li>
-            <!--<li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>-->
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/gallery?rent">Rent</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/makeAdvert.html">Sell</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/makeAdvert.html">Sell</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>
         </ul>
         <div class="wrapper_burger">
             <input type="checkbox" id="check-menu">
@@ -37,7 +38,6 @@
             </nav>
         </div>
     </nav>
-    <div id="user_block"></div>
 </header>
 <div class="advert_block">
     <div class="advert_block_pictures">
@@ -52,7 +52,7 @@
         </div>
         <!--<label for="explen_button" class="explen_text text">Enter your phone, and we will call you</label>-->
         <!--<input id="explen_button" type="text">-->
-        <div class="button_want_to_see">Want to see!</div>
+        <div class="button_advert button_want_to_see">Want to see!</div>
     </div>
 </div>
 <div class="full_description text">
@@ -65,21 +65,30 @@
 		axios.post("/loadUser", {})
 			.then(function(res){
 				if(res){
-					document.getElementsByClassName('menu')[0].innerHTML += res.data;
-                    if(document.getElementById('signup')){
+					//document.getElementsByClassName('menu')[0].innerHTML += res.data.html;
+					if(res.data.id === 'admin'){
+						let parNode = document.getElementsByClassName('advert_block_information')[0];
+						let currNode = document.createElement('div');
+						currNode.setAttribute('type', 'text');
+						currNode.setAttribute('id', 'button_remove');
+						currNode.setAttribute('onclick', 'removeClick()');
+						currNode.className= "button_remove";
+						currNode.innerText = 'Remove';
+						parNode.appendChild(currNode);
+					}
+					else if(!res.data.id){
 						let parNode = document.getElementsByClassName('advert_block_information_part')[0];
 						let currNode = document.createElement('label');
 						currNode.className= "explen_text text";
-						currNode.setAttribute('for', 'explen_button')
+						currNode.setAttribute('for', 'explen_button');
 						currNode.innerText = `Enter your phone, and we will call you`;
 						parNode.appendChild(currNode);
 
 						currNode = document.createElement('input');
-						currNode.setAttribute('id', 'explen_button')
-						currNode.setAttribute('type', 'text')
+						currNode.setAttribute('id', 'explen_button');
+						currNode.setAttribute('type', 'text');
 						parNode.appendChild(currNode);
                     }
-
 
 					// currNode = document.createElement('input');
 					// currNode.className= "button_want_to_see";
@@ -91,6 +100,17 @@
 				console.log(err);
 			});
 
+		// document.getElementById('button_remove').onclick = function(){
+		// 	axios.post('/remove_existing_advert', {
+		// 		id: `${window.location.href.substr(start+1)}`
+		// 	})
+		// 		.then(function(res){
+		// 			alert(res.data)
+		// 		})
+		// 		.catch(function (err) {
+		// 			console.log(err);
+		// 		});
+		// }
 	})
 
 	// window.onload = function() {
@@ -213,6 +233,13 @@
 
 				// currNode.style.backgroundImage = `url(${someData[i + start].photos[0]})`;
 				// parNode.appendChild(currNode);
+				let arr = document.getElementsByClassName('sub_picture');
+				for(let i = 0; i < arr.length; i++){
+					console.log(i)
+					arr[i].onclick = function () {
+						document.getElementsByClassName('main_picture')[0].src = arr[i].src;
+					}
+				}
 
 			})
 			.catch(function (err) {
@@ -248,19 +275,24 @@
 				});
         }
 		else{
-			console.log('3')
 			document.getElementById('explen_button').innerText = 'required'
         }
 
     };
 
-    let arr = document.getElementsByClassName('sub_picture');
-    for(let i = 0; i < arr.length; i++){
-		arr[i].onclick = function () {
-			document.getElementsByClassName('main_picture')[0].src = arr[i].src;
-		}
-    }
 
+    function removeClick() {
+		axios.post('/remove_existing_advert', {
+			id: `${window.location.href.substr(start+1)}`
+		})
+			.then(function(res){
+				alert(res.data)
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
+	}
 </script>
+<script src="js/navigation.js"></script>
 </body>
 </html>

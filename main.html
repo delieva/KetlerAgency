@@ -16,17 +16,22 @@
     </div>
     <nav id="navigation">
         <ul class="menu" >
-            <li class="sub_menu"><a class="text" href="#greeting">Buy</a></li>
-            <!--<li class="sub_menu">-->
-                <!--<a class="text" href="#skills">Skills</a>-->
-                <!--<ul class="subsub_menu">-->
-                <!--</ul>-->
-            <!--</li>-->
-            <li class="sub_menu"><a class="text" href="#connect">Rent</a></li>
-            <li class="sub_menu"><a class="text" href="#connect">Sell</a></li>
-            <li class="sub_menu"><a class="text" href="#connect">About agency</a></li>
-            <li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/gallery?sell">Buy</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/gallery?rent">Rent</a></li>
+            <li class="sub_menu"><a class="text" href="http://localhost:8080/makeAdvert.html">Sell</a></li>
+            <li class="sub_menu"><a class="text" href="#connect">Agency</a>
+            <!--<ul class="subsub_menu">-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">About</a></li>-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">Servises</a></li>-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">Contacts</a></li>-->
+                <!--<li class="sub_menu"><a class="text" href="#connect">Feedback</a></li>-->
+            <!--</ul>-->
+            </li>
         </ul>
+        <div class="search">
+            <input class="input_search" type="text" value="Search">
+            <button class="button_search"><i class="fas fa-search"></i></button>
+        </div>
         <div class="wrapper_burger">
             <input type="checkbox" id="check-menu">
             <label for="check-menu"></label>
@@ -65,19 +70,7 @@
 			currentSlide = (currentSlide+1)%slides.length;
 			slides[currentSlide].className = 'slide showing';
 		}
-
-		window.addEventListener("load", function() {
-			axios.post("/loadUser", {})
-				.then(function(res){
-					if(res){
-						console.log('hi')
-						document.getElementsByClassName('menu')[0].innerHTML += res.data
-					}
-				})
-				.catch(function (err) {
-					console.log(err);
-				});
-		})
     </script>
+<script src="js/navigation.js"></script>
 </body>
 </html>

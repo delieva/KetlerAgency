@@ -1,8 +1,5 @@
-let arr = [{i:2},{j:3}]
+let arr = [1, 2, 3]
 
-let user = arr.find(function(itm){
-	if(itm.i === 2){
-		return itm;
-	}
-});
-console.log(user);
+arr.splice(0, 1);
+
+console.log(arr);

@@ -81,7 +81,7 @@
     cursor: pointer;
 }
 
-.button_want_to_see:hover{
+.button_advert:hover{
     background-color: #81aaa7;
     width: 5em;
     margin-top: 1em;

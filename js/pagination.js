@@ -8,7 +8,14 @@ function filter_by_city(value){
 	return value.city === document.getElementById('filter_city').value;
 }
 
-function filter(someData, city, district) {
+function filter_by_type(value){
+	return value.type === document.getElementById('filter_type').value.toLowerCase();
+}
+
+function filter(someData, city, district, type) {
+	if(type){
+		someData = someData.filter(filter_by_type)
+	}
 	if(city){
 		let sdata = someData.filter(filter_by_city);
 		if(district){
@@ -43,7 +50,6 @@ function changeConfigs(someData){
 
 //Function for initialisation the number of the page and pages controller
 function init(someData){
-	
 	document.getElementsByClassName("next")[0].onclick = function() {
 		pager("next", someData);
 		return false;
@@ -197,9 +203,15 @@ function build_results(someData) {
 		parNode.appendChild(currNode);
 		//
 		parNode = document.getElementsByClassName('card_photo_cover')[i]
-		currNode = document.createElement('span');
+		currNode = document.createElement('div');
 		currNode.className= "cost";
 		currNode.innerHTML = someData[i + start].cost + '$';
+		parNode.appendChild(currNode);
+		//
+		parNode = document.getElementsByClassName('card_photo_cover')[i]
+		currNode = document.createElement('span');
+		currNode.className= "type";
+		currNode.innerHTML = someData[i + start].type;
 		parNode.appendChild(currNode);
 		//
 		parNode = document.getElementsByClassName('card_description')[i]
@@ -214,34 +226,26 @@ function build_results(someData) {
 		currNode.innerHTML = `ID: ${someData[i + start].id}`;
 		parNode.appendChild(currNode);
 	}
-}
-
-window.addEventListener("load", function() {
-	axios.post("/loadUser", {})
-		.then(function(res){
-			if(res){
-				console.log('hi')
-				document.getElementsByClassName('menu')[0].innerHTML += res.data
-			}
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
 	for(let i = 0; i < document.getElementsByClassName('card').length; i++){
+		console.log('fuck')
 		document.getElementsByClassName('card')[i].onclick = function(){
 			let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf(' ');
 			let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start+1);
 			window.location.href = `http://localhost:8080/advert?advertId=${id}`
 		}
 	}
-	
+}
+
+
+const start = window.location.href.lastIndexOf('?');
+const param = (window.location.href.substr(start+1) === "sell" || window.location.href.substr(start+1) === "rent") ? window.location.href.substr(start+1) : null;
+
+axios.post("/galery.html", {
+	type: param
 })
-
-
-
-axios.post("/galery.html", {})
 	.then(function(res){
 		let set = new Set();
+		console.log(res.data)
 		res.data.forEach((obj) => {
 			set.add(obj.city)
 		})
@@ -260,6 +264,17 @@ axios.post("/galery.html", {})
 	});
 //});
 
+// document.getElementById('filter_type').onchange = function(){
+// 	axios.post("./galery.html", {
+// 		type: `${document.getElementById('filter_type').value.toLowerCase()}`
+// 	})
+// 		.then(function(res){
+//
+// 		})
+// 		.catch(function (err) {
+// 			console.log(err);
+// 		});
+// };
 
 document.getElementById('filter_city').onchange = function(){
 	axios.post("./galery.html", {})
@@ -286,7 +301,7 @@ document.getElementById('filter_city').onchange = function(){
 document.getElementsByClassName("filter_button")[0].onclick = function(){
 	axios.post("./galery.html", {})
 		.then(function(res){
-			let filteredData = filter(res.data, document.getElementById('filter_city').value, document.getElementById('filter_district').value);
+			let filteredData = filter(res.data, document.getElementById('filter_city').value, document.getElementById('filter_district').value, document.getElementById('filter_type').value);
 			changeConfigs(filteredData);
 			init(filteredData);
 		})

@@ -1,7 +1,7 @@
 @import "burger.css";
 @import "slider.css";
 @import "navigation.css";
-@import "../test/card.css";
+@import "card.css";
 body{
     margin: 0;
 }

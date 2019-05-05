@@ -1,10 +1,10 @@
-//window.addEventListener('load', function(){
+// window.addEventListener('load', async function(){
 	axios.post('/get_preadverts', {})
-		.then(function(res){
+		.then( function(res){
 			if(res.data){
 				for(let i = 0; i < res.data.length; i++){
 					//
-					let parNode  = document.getElementsByClassName('account_reviews_wrapper')[0];
+					let parNode  = document.getElementsByClassName('account_preadverts_wrapper')[0];
 					let currNode = document.createElement('div');
 					currNode.className= "card_block";
 					parNode.appendChild(currNode);
@@ -23,7 +23,7 @@
 					//
 					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
-					currNode.className= "button_remove";
+					currNode.className= "button_remove_adv";
 					currNode.innerText = 'remove';
 					parNode.appendChild(currNode);
 					
@@ -70,7 +70,7 @@
 			console.log(err);
 		});
 	axios.post('/get_wantreviews', {})
-		.then(function(res){
+		.then( function(res){
 			if(res.data){
 				const start = document.getElementsByClassName('card').length;
 				for(let i = start; i < res.data.length + start; i++){
@@ -80,18 +80,18 @@
 					currNode.className= "card_block";
 					parNode.appendChild(currNode);
 					//
-					parNode  = document.getElementsByClassName('card_block')[i-start];
+					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
 					currNode.className= "card";
 					parNode.appendChild(currNode);
 					//
-					parNode  = document.getElementsByClassName('card_block')[i-start];
+					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
-					currNode.className= "button_remove";
+					currNode.className= "button_remove_review";
 					currNode.innerText = 'remove';
 					parNode.appendChild(currNode);
 					//
-					parNode  = document.getElementsByClassName('card_block')[i-start];
+					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
 					currNode.className= "who_want";
 					currNode.innerText = `Who want: ${res.data[i-start].wantReview}`;
@@ -139,14 +139,7 @@
 			console.log(err);
 		});
 	
-	const cards = document.getElementsByClassName('card').length;
-	for(let i = 0; i < cards; i++){
-		document.getElementsByClassName('card')[i].onclick = function(){
-			let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf('%')
-			let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start)
-			window.location.href = `http://localhost:8080/advert?advertId=${id}`
-		}
-	}
+	
 	// for(let i = 0; i < document.getElementsByClassName('button_add').length; i++){
 	// 	console.log(i)
 	// 	document.getElementsByClassName('button_add')[0].onclick = function(){
@@ -162,21 +155,81 @@
 	// 			});
 	// 	};
 	// }
-//});
+	// for(let i = 0; i < document.getElementsByClassName('button_add').length; i++){
+	// 	window.getElementsByClassName('button_add')[0].onclick = function(){
+	// 		console.log('wroooong	');
+	// 		axios.post('/add_advert', {
+	// 			num: 0
+	// 		})
+	// 			.then(function(res){
+	// 				alert('yes')
+	// 			})
+	// 			.catch(function(err){
+	// 				console.log(err);
+	// 			});
+	// 	};
+	// }
+// });
 
 window.addEventListener('load', function(){
-	document.getElementsByClassName('button_add')[0].onclick = function(){
-		console.log('wroooong	')
-		axios.post('/add_advert', {
-			num: 0
-		})
-			.then(function(res){
-				alert('yes')
+	for(let i = 0; i < document.getElementsByClassName('button_add').length; i++){
+		document.getElementsByClassName('button_add')[i].onclick = function(){
+			console.log('wroooong	')
+			axios.post('/add_advert', {
+				num: i
 			})
-			.catch(function(err){
-				console.log(err);
-			});
-	};
+				.then(function(res){
+					let parentElem = document.getElementsByClassName('account_preadverts_wrapper')[0]
+					let elem = document.getElementsByClassName('card_block')[i]
+					parentElem.removeChild(elem)
+				})
+				.catch(function(err){
+					console.log(err);
+				});
+		};
+	}
+	
+	for(let i = 0; i < document.getElementsByClassName('button_remove_adv').length; i++){
+		document.getElementsByClassName('button_remove_adv')[i].onclick = function(){
+			axios.post('/remove_advert', {
+				num: i
+			})
+				.then(function(res){
+					let parentElem = document.getElementsByClassName('account_preadverts_wrapper')[0]
+					let elem = document.getElementsByClassName('card_block')[i]
+					parentElem.removeChild(elem)
+				})
+				.catch(function(err){
+					console.log(err);
+				});
+		};
+	}
+	
+	for(let i = 0; i < document.getElementsByClassName('button_remove_review').length; i++){
+		document.getElementsByClassName('button_remove_review')[i].onclick = function(){
+			axios.post('/remove_review', {
+				num: i
+			})
+				.then(function(res){
+					let parentElem = document.getElementsByClassName('account_reviews_wrapper')[0]
+					let elem = document.getElementsByClassName('card_block')[i]
+					parentElem.removeChild(elem)
+				})
+				.catch(function(err){
+					console.log(err);
+				});
+		};
+	}
+	const cards = document.getElementsByClassName('card').length;
+	for(let i = 0; i < cards; i++){
+		if(document.getElementsByClassName('card_id')[i].innerHTML !== 'ID: undefined'){
+			document.getElementsByClassName('card')[i].onclick = function(){
+				let start = document.getElementsByClassName('card_id')[i].innerHTML.lastIndexOf('%')
+				let id = document.getElementsByClassName('card_id')[i].innerHTML.substr(start)
+				window.location.href = `http://localhost:8080/advert?advertId=${id}`
+			}
+		}
+	}
 });
 
 

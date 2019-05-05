@@ -113,7 +113,6 @@ window.addEventListener('load', function(){
 
 axios.post('/get_user_acc',{})
 	.then(function(res){
-		console.log('wat')
 		let parNode  = document.getElementsByClassName('account_info')[0];
 		let currNode = document.createElement('div');
 		currNode.className= "account_firstname text account_info_part";
