@@ -2,6 +2,11 @@ document.getElementsByClassName('logo')[0].onclick = function () {
 	window.location.href = '/'
 };
 
+const shareUrl = 'ketleragency.com';
+function popup(url) {
+	window.open(url,'','toolbar=0,status=0,width=626,height=436');
+}
+
 window.addEventListener("load", function() {
 	axios.post("/loadUser", {})
 		.then(function(res){

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About</title>
+    <title>Gallery</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/about.css">
+    <link rel="stylesheet" type="text/css" href="css/cstm_gallery.css">
     <link rel="shortcut icon" href="media/K.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="axios.min.js"></script>
@@ -40,60 +40,40 @@
         </div>
     </nav>
 </header>
-<section class="about_block">
-    <div class="title text">About us</div>
-<!--<section class="why_agency">-->
-    <article class="About_article text">
-        Compass is building the first modern real estate platform, pairing the industry’s
-        top talent with technology to make the search and sell experience intelligent and seamless.
-        As an innovative residential real estate firm, we empower our agents so
-        they have more time for advising their clients. With the solutions-driven mindset of a startup and the
-        sophistication of a luxury brand, Compass is the future of real estate.
-        To lead the industry requires the smartest tools built by the brightest minds across engineering, design, and strategy. Through our proprietary platform,
-        Compass is changing how agents and clients navigate the process of finding or selling a home.
-    </article>
-
-</section>
-<section class="about_block">
-    <div class="title">Contacts</div>
-    <a class="contact" href="#">
-        <i class="fab fa-facebook"></i>
-        facebook.com
-    </a>
-    <a class="contact" href="#"><i class="fab fa-telegram">
-        telegram.com
-    </i></a>
-    <div class="contact">
-        <i class="far fa-envelope"></i>
-        ketler@gmail.com
+<div class="gallery_block">
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/5a734b64dd484a55008b4789-750-563.jpg)"></div>
     </div>
-    <div class="contact">
-        <i class="fas fa-phone"></i>
-        +380607564837
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/1547801260_01.jpg)"></div>
     </div>
-    <div class="contact">
-        <i class="fas fa-phone"></i>
-        +380967478375
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/AI-In-Real-Estate-10-Companies-To-Watch-In-2017.jpg)"></div>
     </div>
-    <div class="contact">
-        <i class="fas fa-phone"></i>
-        +380765463542
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/doma.jpg)"></div>
     </div>
-</section>
-
-<section class="about_block">
-    <div class="title">Location</div>
-    <div class="location_address">
-        <i class="fas fa-map-marker-alt"></i>
-        pr. Peremohy 44a, Kyiv, Ukraine
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/f218ee14af62f63e876e706260efd8bb-1024x675.jpg)"></div>
     </div>
-    <div class="agency_location">
-        <img src="media/map.png" alt="map">
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/real-estate.jpg)"></div>
     </div>
-</section>
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/sloniki.jpg)"></div>
+    </div>
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/forCV.jpg)"></div>
+    </div>
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/AI-In-Real-Estate-10-Companies-To-Watch-In-2017.jpg)"></div>
+    </div>
+    <div class="custom_image_wrapper">
+        <div class="custom_image" style="background-image: url(media/5a734b64dd484a55008b4789-750-563.jpg)"></div>
+    </div>
 
 
-
+</div>
 <footer class="footer">
     <div class="share_wrapper">
         <a class="share_link" href="#"
@@ -112,21 +92,5 @@
     </div>
 </footer>
 <script src="js/navigation.js"></script>
-<script>
-	function initMap() {
-		map = new google.maps.Map(document.getElementsByClassName('agency_location')[0], {
-			zoom: 15,
-			center: {lat: 50.449916, lng: 30.455385}
-		});
-		const marker = new google.maps.Marker({
-			position: {lat:50.449916, lng:30.455385},
-			map: map
-		});
-		codeAddress(address);
-	}
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKPPrDq5nnnNCZVat5gfT6YpzVyFqpkJM&callback=initMap">
-</script>
 </body>
 </html>

@@ -198,6 +198,7 @@ window.addEventListener('load', function(){
 					let parentElem = document.getElementsByClassName('account_preadverts_wrapper')[0]
 					let elem = document.getElementsByClassName('card_block')[i]
 					parentElem.removeChild(elem)
+					window.location.reload()
 				})
 				.catch(function(err){
 					console.log(err);

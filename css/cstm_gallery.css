@@ -1,0 +1,15 @@
+.gallery_block{
+    display: flex;
+    flex-wrap:wrap
+}
+.custom_image_wrapper{
+    padding: 1.5em;
+    border: 1px solid black;
+    margin: 1em;
+}
+.custom_image{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+}

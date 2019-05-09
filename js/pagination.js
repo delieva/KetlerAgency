@@ -32,7 +32,7 @@ function filter(someData, city, district, type) {
 //
 let config = {
 		max_results: 1,
-		max_per_page: 3,
+		max_per_page: 9,
 		page: 1
 	},
 	nOfPages = Math.ceil( config.max_results / config.max_per_page );
@@ -41,7 +41,7 @@ let config = {
 function changeConfigs(someData){
 	config = {
 		max_results: someData.length,
-		max_per_page: 3,
+		max_per_page: 9,
 		page: 1
 	},
 		nOfPages = Math.ceil( config.max_results / config.max_per_page );

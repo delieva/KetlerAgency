@@ -1,0 +1,28 @@
+.agency_location{
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+}
+.title{
+    font-size: 3em;
+    color: #74797c;
+    margin: 0.3em;
+}
+.about_block{
+    width: 70%;
+    margin: auto;
+}
+.contact{
+    text-decoration: none;
+    display: block;
+    color: black;
+    margin: 1em 0;
+    font-size: 1.25em;
+}
+.location_address{
+    text-decoration: none;
+    display: block;
+    color: black;
+    margin: 1em 0;
+    font-size: 1.25em;
+}

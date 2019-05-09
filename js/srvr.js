@@ -175,7 +175,10 @@ app.post('/get_wantreviews', (req, res) => {
 	res.send(forReview)
 });
 
-
+app.post('/get_feedback', (req, res) => {
+	res.send(JSON.parse(fs.readFileSync("JSON/feedback.json")));
+	
+});
 
 
 
@@ -190,18 +193,27 @@ app.post('/get_wantreviews', (req, res) => {
 
 
 app.post('/loadUser', function(req, res){
-	if (!req.session.userId) {
+	if(req.session.userId === 'admin'){
 		res.send({
-				html: `<li class="sub_menu"><a id="login_logout" href="/login"><i class="fas fa-sign-in-alt"></i>&#160;Login</a></li>
-             	<li class="sub_menu"><a id="signup" href="/signup"><i class="fas fa-plus"></i>&#160;Register</a></li>`
+				html: `<li class="menu_li"><a id="user_home_link" class="text" href="/adminAcc.html"><i class="fas fa-user"></i>&#160;Homepage</a></li>
+        			<li class="menu_li"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
+				id: req.session.userId
+			}
+		
+		)
+	}
+	else if (!req.session.userId) {
+		res.send({
+				html: `<li class="menu_li"><a id="login_logout" href="/login"><i class="fas fa-sign-in-alt"></i>&#160;Login</a></li>
+             	<li class="menu_li"><a id="signup" href="/signup"><i class="fas fa-plus"></i>&#160;Register</a></li>`
 			}
 			
 		)
 	}
 	else{
 		res.send({
-				html: `<li class="sub_menu"><a id="user_home_link" class="text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
-        			<li class="sub_menu"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
+				html: `<li class="menu_li"><a id="user_home_link" class="text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
+        			<li class="menu_li"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
 				id: req.session.userId
 			}
 		
@@ -403,4 +415,35 @@ app.post('/search', function (req, res) {
 		}
 	});
 	res.send(arr);
+});
+
+app.post('/post_feedback', function (req, res) {
+	let feedback = JSON.parse(fs.readFileSync("JSON/feedback.json"));
+	const users = JSON.parse(fs.readFileSync("JSON/users.json"));
+	let obj = {};
+	let now = new Date();
+	obj.time = String(now).substr(0, 24);
+	users.forEach((item) => {
+		if(item.userId === req.session.userId){
+			obj.name = `${item.firstname} ${item.lastname}`;
+		}
+	});
+	obj.text = req.body.text;
+	feedback.push(obj);
+	fs.writeFileSync('JSON/feedback.json', JSON.stringify(feedback), 'utf8');
+	res.send("OK")
+});
+
+app.post('/remove_feedback', function(req, res){
+	let feedback = JSON.parse(fs.readFileSync("JSON/feedback.json"));
+	const num = req.body.num;
+	feedback.splice(num, 1);
+	
+	fs.writeFileSync('JSON/feedback.json', JSON.stringify(feedback), 'utf8');
+	res.end('OK')
+});
+
+app.post('/get_addresses', function (req, res) {
+	const adverts = JSON.parse(fs.readFileSync("JSON/adverts.json"));
+	res.send(adverts)
 });

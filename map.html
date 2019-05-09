@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" href="media/K.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="axios.min.js"></script>
+</head>
+<body>
+<style>
+    #map{
+        width: 90%;
+        height: 600px;
+        margin: auto;
+    }
+</style>
+<div id="map"></div>
+<footer class="footer">
+    <div class="share_wrapper">
+        <a class="share_link" href="#"
+           onclick="popup(`http://www.facebook.com/share.php?u=https://${shareUrl}`)">
+            <i class="fab fa-facebook"></i></a>
+        <a class="share_link" href="#"
+           onclick="popup('https://twitter.com/intent/tweet?&status='+document.title+'%20Agency%20––%20The%20way%20to%20your%20home++%28'+shareUrl+'%29&hashtags=realestate,ketler,ketleragency')">
+            <i class="fab fa-twitter"></i></a>
+        <a class="share_link" href="#"
+           onclick="popup(`https://telegram.me/share/url?url=${shareUrl}&text=Ketler%20Agency%20–%20The%20way%20to%20your%20home`)">
+            <i class="fab fa-telegram"></i></a>
+    </div>
+    <div class="footer_text_block text">
+        <span class="footer_text text">©2019 Ketler. All Rights Reserved.</span>
+        <span class="footer_text text">Site by Deliieva Oleksandra</span>
+    </div>
+</footer>
+<script>
+	    let geocoder;
+		let map;
+
+		function initMap() {
+			geocoder = new google.maps.Geocoder();
+
+			var uluru = {lat: 49.506626, lng: 32.008125};
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 6,
+				center: uluru
+			});
+			axios.post('/get_addresses', {})
+				.then(function(res){
+					codeAddress(res.data);
+				})
+				.catch(function(err){
+					console.log(err);
+				});
+
+
+		}
+
+
+
+		function codeAddress(arr) {
+            arr.forEach((curr)=>{
+            	console.log(curr);
+				var InfoWindow = new google.maps.InfoWindow({
+					content: `<a href="http://localhost:8080/advert?advertId=${curr.id}">
+                        ${curr.city},${curr.address}
+                        cost:${curr.cost}$
+                    </a>`
+				});
+
+				geocoder.geocode({ 'address': `${curr.city} ${curr.address}`}, function (results, status) {
+					console.log(results);
+					var latLng = {lat: results[0].geometry.location.lat (), lng: results[0].geometry.location.lng ()};
+					console.log (latLng);
+					if (status === 'OK') {
+						var marker = new google.maps.Marker({
+							position: latLng,
+							map: map
+						});
+						marker.addListener('click', function(){
+							InfoWindow.open(map, marker);
+						});
+					} else {
+						alert('Geocode was not successful for the following reason: ' + status);
+					}
+				});
+            })
+
+
+		}
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKPPrDq5nnnNCZVat5gfT6YpzVyFqpkJM&callback=initMap">
+</script>
+</body>
+</html>
