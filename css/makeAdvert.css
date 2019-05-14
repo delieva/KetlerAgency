@@ -4,8 +4,14 @@ input{
 .form{
     border: 1px solid black;
     padding: 3em 5em;
-    margin: 5% auto;
+    margin: 0 auto;
     width: 40%;
+}
+.login_form{
+    border: 1px solid black;
+    padding: 2em 2.5em 3em 2.5em;
+    margin: 0 auto;
+    width: 30%;
 }
 
 .form_part{
@@ -28,4 +34,12 @@ input{
     background-color: #81aaa7;
     color: white;
     cursor: pointer;
+}
+
+.fiction{
+    padding-top: 7em;
+}
+
+.form_note{
+    color: #9fa4a7;
 }

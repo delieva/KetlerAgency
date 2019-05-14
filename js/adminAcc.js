@@ -16,14 +16,14 @@
 					//
 					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
-					currNode.className= "button_add";
+					currNode.className= "button_add button";
 					currNode.setAttribute('id', 'button')
 					currNode.innerText = 'add';
 					parNode.appendChild(currNode);
 					//
 					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
-					currNode.className= "button_remove_adv";
+					currNode.className= "button_remove_adv button";
 					currNode.innerText = 'remove';
 					parNode.appendChild(currNode);
 					
@@ -87,13 +87,13 @@
 					//
 					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
-					currNode.className= "button_remove_review";
+					currNode.className= "button_remove_review button";
 					currNode.innerText = 'remove';
 					parNode.appendChild(currNode);
 					//
 					parNode  = document.getElementsByClassName('card_block')[i];
 					currNode = document.createElement('div');
-					currNode.className= "who_want";
+					currNode.className= "who_want button";
 					currNode.innerText = `Who want: ${res.data[i-start].wantReview}`;
 					parNode.appendChild(currNode);
 					
@@ -174,7 +174,6 @@
 window.addEventListener('load', function(){
 	for(let i = 0; i < document.getElementsByClassName('button_add').length; i++){
 		document.getElementsByClassName('button_add')[i].onclick = function(){
-			console.log('wroooong	')
 			axios.post('/add_advert', {
 				num: i
 			})
@@ -182,6 +181,7 @@ window.addEventListener('load', function(){
 					let parentElem = document.getElementsByClassName('account_preadverts_wrapper')[0]
 					let elem = document.getElementsByClassName('card_block')[i]
 					parentElem.removeChild(elem)
+					window.location.reload()
 				})
 				.catch(function(err){
 					console.log(err);
@@ -215,6 +215,7 @@ window.addEventListener('load', function(){
 					let parentElem = document.getElementsByClassName('account_reviews_wrapper')[0]
 					let elem = document.getElementsByClassName('card_block')[i]
 					parentElem.removeChild(elem)
+					window.location.reload()
 				})
 				.catch(function(err){
 					console.log(err);

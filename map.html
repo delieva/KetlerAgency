@@ -4,18 +4,68 @@
     <meta charset="UTF-8">
     <title>Map</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
     <link rel="shortcut icon" href="media/K.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="axios.min.js"></script>
 </head>
-<body>
-<style>
-    #map{
-        width: 90%;
-        height: 600px;
-        margin: auto;
-    }
-</style>
+<body><header class="head ">
+    <div class="logo text">
+        <img src="media/K.png">
+        <div>etler.</div>
+    </div>
+    <nav id="navigation">
+        <ul class="menu" >
+            <li class="menu_li" ><a class="text" href="http://localhost:8080/gallery">Adverts</a>
+                <ul class="sub_menu">
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/gallery?sell">Buy</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/gallery?rent">Rent</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/map.html">On map</a></li>
+                </ul>
+            </li>
+            <li class="menu_li"><a class="text" href="http://localhost:8080/makeAdvert.html">Sell</a></li>
+            <li class="menu_li"><a class="text" href="http://localhost:8080/about.html">Agency</a>
+                <ul class="sub_menu">
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/about.html">About</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/services.html">Services</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/about.html">Contacts</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/custom_gallery.html">Gallery</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/feedback.html">Feedback</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="search">
+            <input class="input_search" type="text" placeholder="Search">
+            <div class="button_search"><i class="fas fa-search"></i></div>
+        </div>
+        <div class="wrapper_burger">
+            <input type="checkbox" id="check_menu">
+            <label for="check_menu" class="burger_check"></label>
+            <div class="burger_line first"></div>
+            <div class="burger_line second"></div>
+            <div class="burger_line third"></div>
+            <div class="burger_line fourth"></div>
+            <nav class="burger_menu">
+                <div class="burger_submenu_block text">
+                    <input class="burger_input_search" type="text" placeholder="Search">
+                    <div class="burger_button_search"><i class="fas fa-search"></i></div>
+                </div>
+                <div class="burger_submenu_block text" id="burger_submenu_one">Adverts<i class="fas fa-chevron-down"></i></div>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery">All</a>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery?sell">Buy</a>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery?rent">Rent</a>
+                <a class="burger_submenu_block text" href="http://localhost:8080/makeAdvert.html">Sell</a>
+                <div class="burger_submenu_block text">Agency<i class="fas fa-chevron-down"></i></div>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/about.html">About</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/services.html">Servises</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/about.html">Contacts</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/custom_gallery.html">Gallery</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/feedback.html">Feedback</a>
+            </nav>
+        </div>
+    </nav>
+</header>
+<div class="title">Find objects on a map<span class="small_title">Just click!</span></div>
 <div id="map"></div>
 <footer class="footer">
     <div class="share_wrapper">

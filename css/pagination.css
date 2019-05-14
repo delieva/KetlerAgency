@@ -24,3 +24,10 @@
     color: black;
     cursor: pointer;
 }
+.page_input{
+    background: transparent;
+    width: 3em;
+    border-radius: 4px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+}

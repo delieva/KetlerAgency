@@ -13,8 +13,11 @@
 .sub_picture_wrapper{
     /*border: 1px solid black;*/
     height: 17%;
+    width: 100%;
     margin: 3% 0 0 0;
     padding: 0;
+    position: absolute;
+    bottom: 0;
     display: flex;
     overflow-x:scroll;
     overflow-y: hidden;
@@ -22,8 +25,9 @@
 
 .advert_block{
     border: 1px solid black;
-    /*margin: auto;*/
-    margin: 5% 10%;
+    /*!*margin: auto;*!*/
+    /*padding-top: 6em;*/
+    margin: 0 10% 5% 10%;
     height: 30em;
     width: 80%;
     position: relative;
@@ -88,4 +92,7 @@
     font-size: 1.27em;
     cursor: pointer;
     color: white;
+}
+.fiction{
+    height: 6em;
 }

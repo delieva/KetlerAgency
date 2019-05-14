@@ -299,7 +299,7 @@ else{
 // };
 
 document.getElementById('filter_city').onchange = function(){
-	axios.post("./galery.html", {})
+	axios.post("/gallery", {})
 		.then(function(res){
 			let set = new Set();
 			res.data = res.data.filter(filter_by_city)
@@ -321,7 +321,7 @@ document.getElementById('filter_city').onchange = function(){
 };
 
 document.getElementsByClassName("filter_button")[0].onclick = function(){
-	axios.post("./galery.html", {})
+	axios.post("/gallery", {})
 		.then(function(res){
 			let filteredData = filter(res.data, document.getElementById('filter_city').value, document.getElementById('filter_district').value, document.getElementById('filter_type').value);
 			changeConfigs(filteredData);

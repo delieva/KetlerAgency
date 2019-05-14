@@ -4,7 +4,8 @@
   "builds": [{ "src": "js/srvr.js", "use": "@now/node" }],
   "alias": "deliieva",
   "routes": [
-    { "src": "/(.*)", "dest": "js/srvr.js" }
+    { "src": "/", "dest": "/main.html" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
 

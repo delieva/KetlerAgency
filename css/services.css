@@ -1,0 +1,39 @@
+.service_block{
+    margin: 2em 5%;
+    border: 1px solid black;
+}
+.fiction{
+    padding-top: 5em;
+}
+.title{
+    font-size: 2em;
+    color: #74797c;
+    margin: 0.5em 1em 0 1em;
+}
+
+.service_article{
+    display: flex;
+    align-items: center;
+    padding-right: 2em;
+}
+
+
+.service_picture{
+    height: 9em;
+    margin: 2em;
+}
+
+@media screen and (max-width: 800px){
+    .service_picture{
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    .title{
+        padding-bottom: 1em;
+    }
+    .service_article{
+        width: 100%;
+        display: block;
+    }
+}

@@ -20,14 +20,16 @@
                 <ul class="sub_menu">
                     <li class="sub_menu_li"><a class="text" href="http://localhost:8080/gallery?sell">Buy</a></li>
                     <li class="sub_menu_li"><a class="text" href="http://localhost:8080/gallery?rent">Rent</a></li>
+                    <li class="sub_menu_li"><a class="text" href="http://localhost:8080/map.html">On map</a></li>
                 </ul>
             </li>
             <li class="menu_li"><a class="text" href="http://localhost:8080/makeAdvert.html">Sell</a></li>
-            <li class="menu_li"><a class="text" href="">Agency</a>
+            <li class="menu_li"><a class="text" href="http://localhost:8080/about.html">Agency</a>
             <ul class="sub_menu">
                 <li class="sub_menu_li"><a class="text" href="http://localhost:8080/about.html">About</a></li>
-                <li class="sub_menu_li"><a class="text" href="http://localhost:8080/servises.html">Servises</a></li>
+                <li class="sub_menu_li"><a class="text" href="http://localhost:8080/services.html">Services</a></li>
                 <li class="sub_menu_li"><a class="text" href="http://localhost:8080/about.html">Contacts</a></li>
+                <li class="sub_menu_li"><a class="text" href="http://localhost:8080/custom_gallery.html">Gallery</a></li>
                 <li class="sub_menu_li"><a class="text" href="http://localhost:8080/feedback.html">Feedback</a></li>
             </ul>
             </li>
@@ -37,13 +39,28 @@
             <div class="button_search"><i class="fas fa-search"></i></div>
         </div>
         <div class="wrapper_burger">
-            <input type="checkbox" id="check-menu">
-            <label for="check-menu"></label>
-            <div class="burger-line first"></div>
-            <div class="burger-line second"></div>
-            <div class="burger-line third"></div>
-            <div class="burger-line fourth"></div>
-            <nav class="burger-menu">
+            <input type="checkbox" id="check_menu">
+            <label for="check_menu" class="burger_check"></label>
+            <div class="burger_line first"></div>
+            <div class="burger_line second"></div>
+            <div class="burger_line third"></div>
+            <div class="burger_line fourth"></div>
+            <nav class="burger_menu">
+                <div class="burger_submenu_block text">
+                        <input class="burger_input_search" type="text" placeholder="Search">
+                        <div class="burger_button_search"><i class="fas fa-search"></i></div>
+                </div>
+                <div class="burger_submenu_block text" id="burger_submenu_one">Adverts<i class="fas fa-chevron-down"></i></div>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery">All</a>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery?sell">Buy</a>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery?rent">Rent</a>
+                <a class="burger_submenu_block text" href="http://localhost:8080/makeAdvert.html">Sell</a>
+                <div class="burger_submenu_block text">Agency<i class="fas fa-chevron-down"></i></div>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/about.html">About</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/services.html">Servises</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/about.html">Contacts</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/custom_gallery.html">Gallery</a>
+                <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/feedback.html">Feedback</a>
             </nav>
         </div>
     </nav>
@@ -91,28 +108,6 @@
 			currentSlide = (currentSlide+1)%slides.length;
 			slides[currentSlide].className = 'slide showing';
 		}
-		// Share = {
-		// 	facebook: function(purl, ptitle = 'Ketler Agency', pimg, text) {
-		// 		let url  = 'http://www.facebook.com/sharer.php?s=100';
-		// 		url += `&p[title]=`     + encodeURIComponent('titllllll');
-		// 		url += `&p[summary]=`   + encodeURIComponent('hello');
-		// 		url += `&p[url]=`       + encodeURIComponent('https://ketleragency.com');
-		// 		url += `&p[images][0]=` + encodeURIComponent('https://assets.entrepreneur.com/content/3x2/2000/20150622231001-for-sale-real-estate-home-house.jpeg');
-		// 		Share.popup(url);
-		// 	},
-		// 	twitter: function(purl, ptitle) {
-		// 		let url  = 'http://twitter.com/share?';
-		// 		url += 'text='      + encodeURIComponent(ptitle);
-		// 		url += '&url='      + encodeURIComponent(purl);
-		// 		url += '&counturl=' + encodeURIComponent(purl);
-		// 		Share.popup(url);
-		// 	},
-        //
-        // const shareUrl = 'ketleragency.com';
-		// function popup(url) {
-		// 	window.open(url,'','toolbar=0,status=0,width=626,height=436');
-        // }
-		// };
     </script>
 <script src="js/navigation.js"></script>
 </body>

@@ -93,6 +93,7 @@ window.addEventListener('load', function(){
 							const parentElem = document.getElementsByClassName('feedback_wrapper')[0];
 							const elem = document.getElementsByClassName('feedback_block')[i]
 							parentElem.removeChild(elem)
+							window.location.reload()
 						})
 						.catch(function(err){
 							console.log(err);
@@ -103,25 +104,24 @@ window.addEventListener('load', function(){
 					
 				}
 			else if(res.data.id){
-				let parNode = document.getElementsByTagName('body')[0];
-				let currNode = document.createElement('div');
-				currNode.className= "leave_feedback_block";
-				parNode.appendChild(currNode);
+				// let parNode = document.getElementsByTagName('body')[0];
+				// let currNode = document.createElement('div');
+				// currNode.className= "leave_feedback_block";
+				// parNode.appendChild(currNode);
 				
-				parNode = document.getElementsByClassName('leave_feedback_block')[0]
-				currNode = document.createElement('label');
+				let parNode = document.getElementsByClassName('leave_feedback_block')[0]
+				let currNode = document.createElement('label');
 				currNode.className= "leave_feedback_text text";
 				currNode.setAttribute('for', 'leave_feedback');
 				currNode.innerText = `leave your feedback here:`;
 				parNode.appendChild(currNode);
 				
-				currNode = document.createElement('input');
+				currNode = document.createElement('textarea');
 				currNode.setAttribute('id', 'leave_feedback');
-				currNode.setAttribute('type', 'text');
 				parNode.appendChild(currNode);
 				
 				currNode = document.createElement('div');
-				currNode.className= "feedback_send";
+				currNode.className= "feedback_send button";
 				currNode.innerHTML = `Send`;
 				parNode.appendChild(currNode);
 				

@@ -58,6 +58,8 @@ app.get('/account', checkLoginBefore, (req, res) => {
 });
 
 app.post('/get_user_acc', (req, res) => {
+	let users = JSON.parse(fs.readFileSync("JSON/users.json"));
+	
 	users.forEach((item) => {
 		if(item.userId === req.session.userId){
 			res.send(item)
@@ -81,7 +83,7 @@ app.post('/get_user_reviews', (req, res) => {
 	let arr = [];
 	let forReview = JSON.parse(fs.readFileSync("JSON/for_review.json"));
 	forReview.forEach((item) => {
-		if(item.wantReview === req.session.userId){
+		if(item.userWantReview === req.session.userId){
 			arr.push(item)
 		}
 	});
@@ -136,6 +138,7 @@ app.post('/for_review', (req, res) => {
 					}
 				});
 				// console.log(user);
+				item.userWantReview = user.userId;
 				item.wantReview = user.telephone;
 			}
 			forReview.push(item);
@@ -181,22 +184,13 @@ app.post('/get_feedback', (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
 app.post('/loadUser', function(req, res){
 	if(req.session.userId === 'admin'){
 		res.send({
 				html: `<li class="menu_li"><a id="user_home_link" class="text" href="/adminAcc.html"><i class="fas fa-user"></i>&#160;Homepage</a></li>
         			<li class="menu_li"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
+				burger: `<a class="burger_submenu_block text" href="/adminAcc.html"><i class="fas fa-user"></i>&#160;Homepage</a></li>
+        				<a class="burger_submenu_block text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
 				id: req.session.userId
 			}
 		
@@ -204,6 +198,8 @@ app.post('/loadUser', function(req, res){
 	}
 	else if (!req.session.userId) {
 		res.send({
+			burger: `<a class="burger_submenu_block text" href="/login"><i class="fas fa-user"></i>&#160;Login</a></li>
+        				<a class="burger_submenu_block text" href="/signup"><i class="fas fa-sign-out-alt"></i>&#160;Register</a></li>`,
 				html: `<li class="menu_li"><a id="login_logout" href="/login"><i class="fas fa-sign-in-alt"></i>&#160;Login</a></li>
              	<li class="menu_li"><a id="signup" href="/signup"><i class="fas fa-plus"></i>&#160;Register</a></li>`
 			}
@@ -212,9 +208,11 @@ app.post('/loadUser', function(req, res){
 	}
 	else{
 		res.send({
-				html: `<li class="menu_li"><a id="user_home_link" class="text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
+			burger: `<a class="burger_submenu_block text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
+        				<a class="burger_submenu_block text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
+			html: `<li class="menu_li"><a id="user_home_link" class="text" href="/account"><i class="fas fa-user"></i>&#160;Homepage</a></li>
         			<li class="menu_li"><a id="login_logout" class="text" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>`,
-				id: req.session.userId
+			id: req.session.userId
 			}
 		
 		)

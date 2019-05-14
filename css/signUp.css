@@ -1,6 +1,21 @@
-input{
-    display: block;
+.form_part{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5em 0;
 }
-body{
-
+.form{
+    border: 1px solid black;
+    padding: 3em 5em;
+    margin: 0 auto;
+    width: 40%;
+}
+.submit_form_button{
+    float: right;
+    height: 1.8em;
+    font-size: 1.2em;
+    border-radius: 4px;
+    background-color: #81aaa7;
+    color: white;
+    cursor: pointer;
 }
