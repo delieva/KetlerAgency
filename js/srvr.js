@@ -105,7 +105,7 @@ app.get('/gallery*', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	res.sendFile('main.html', { root: '.' })
+	res.sendFile('index.html', { root: '.' })
 });
 
 app.get('/advert*', (req, res) => {
