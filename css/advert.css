@@ -1,61 +1,61 @@
-.sub_picture{
-    display: inline-block;
-    height: 100%;
-    width: auto;
-    margin: 0 1% 3% 3% ;
-    cursor: pointer;
-}
-.main_picture{
-    display: block;
-    max-width: 96%;
-    max-height: 96%;
-}
-.sub_picture_wrapper{
+/*.sub_picture{*/
+    /*display: inline-block;*/
+    /*height: 100%;*/
+    /*width: auto;*/
+    /*margin: 0 1% 3% 3% ;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.main_picture{*/
+    /*display: block;*/
+    /*max-width: 96%;*/
+    /*max-height: 96%;*/
+/*}*/
+/*.sub_picture_wrapper{*/
+    /*!*border: 1px solid black;*!*/
+    /*height: 17%;*/
+    /*width: 100%;*/
+    /*margin: 3% 0 0 0;*/
+    /*padding: 0;*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*display: flex;*/
+    /*overflow-x:scroll;*/
+    /*overflow-y: hidden;*/
+/*}*/
+
+/*.advert_block{*/
     /*border: 1px solid black;*/
-    height: 17%;
-    width: 100%;
-    margin: 3% 0 0 0;
-    padding: 0;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    overflow-x:scroll;
-    overflow-y: hidden;
-}
+    /*!*!*margin: auto;*!*!*/
+    /*!*padding-top: 6em;*!*/
+    /*margin: 0 10% 5% 10%;*/
+    /*height: 30em;*/
+    /*width: 80%;*/
+    /*position: relative;*/
+/*}*/
 
-.advert_block{
-    border: 1px solid black;
-    /*!*margin: auto;*!*/
-    /*padding-top: 6em;*/
-    margin: 0 10% 5% 10%;
-    height: 30em;
-    width: 80%;
-    position: relative;
-}
+/*.main_picture_wrapper{*/
+/*height: 80%;*/
+/*max-width: 100%;*/
+/*display: flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*}*/
 
-.advert_block_pictures{
-    border-right: 1px solid black;
-    height: 100%;
-    width: 70%;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-}
+/*.advert_block_pictures{*/
+    /*border-right: 1px solid black;*/
+    /*height: 100%;*/
+    /*width: 70%;*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+/*}*/
 
-.main_picture_wrapper{
-    height: 80%;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.advert_block_information{
-    height: 100%;
-    width: 26%;
-    position: absolute;
-    right: 1%;
-}
+/*.advert_block_information{*/
+    /*height: 100%;*/
+    /*width: 26%;*/
+    /*position: absolute;*/
+    /*right: 1%;*/
+/*}*/
 
 .information_part_title{
     display: block;
@@ -84,6 +84,15 @@
     font-size: 1.27em;
     cursor: pointer;
 }
+.button_advert{
+    padding: 0.5em;
+    border-radius: 4px;
+    background-color: #d5e0df;
+    width: 5em;
+    margin-top: 1em;
+    font-size: 1.27em;
+    cursor: pointer;
+}
 
 .button_advert:hover{
     background-color: #81aaa7;
@@ -95,4 +104,85 @@
 }
 .fiction{
     height: 6em;
+}
+@media screen and (min-width: 681px){
+    .advert_block{
+        border: 1px solid black;
+        /*!*margin: auto;*!*/
+        /*padding-top: 6em;*/
+        margin: 0 10% 5% 10%;
+        height: 30em;
+        width: 80%;
+        position: relative;
+    }
+    .main_picture_wrapper{
+        height: 80%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sub_picture{
+        display: inline-block;
+        height: 100%;
+        width: auto;
+        margin: 0 1% 3% 3% ;
+        cursor: pointer;
+    }
+    .main_picture{
+        display: block;
+        max-width: 96%;
+        max-height: 96%;
+    }
+    .sub_picture_wrapper{
+        /*border: 1px solid black;*/
+        height: 17%;
+        width: 100%;
+        margin: 3% 0 0 0;
+        padding: 0;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        overflow-x:scroll;
+        overflow-y: hidden;
+    }
+    .advert_block_pictures{
+        border-right: 1px solid black;
+        height: 100%;
+        width: 70%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
+
+    .advert_block_information{
+        height: 100%;
+        width: 26%;
+        position: absolute;
+        right: 1%;
+    }
+}
+@media screen and (max-width: 680px){
+    .advert_block{
+        /*!*margin: auto;*!*/
+        /*padding-top: 6em;*/
+        height: 800em;
+        margin: 0;
+        position: relative;
+    }
+    .main_picture{
+        display: none;
+    }
+    .picture{
+        width: 100%;
+    }
+    .advert_block_pictures{
+        width: 96%;
+        padding-left: 2%;
+    }
+
+    .advert_block_information{
+        width: 96%;
+        padding-left: 2%;
+    }
 }

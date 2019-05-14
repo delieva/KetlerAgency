@@ -37,6 +37,14 @@ function checkLoginAfter(req, res, next) {
 		next();
 	}
 }
+function checkAdmin(req, res, next) {
+	if (req.session.userId !== 'admin') {
+		res.redirect('/')
+	} else {
+		next();
+	}
+}
+
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -55,6 +63,10 @@ const upload = multer({ storage: storage});
 
 app.get('/account', checkLoginBefore, (req, res) => {
 	res.sendFile('account.html', { root: '.' })
+});
+
+app.get('/adminAcc.html', checkAdmin, (req, res) => {
+	res.sendFile('adminAcc.html', { root: '.' })
 });
 
 app.post('/get_user_acc', (req, res) => {
