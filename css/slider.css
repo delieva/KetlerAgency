@@ -1,10 +1,5 @@
 /*Make the wrap #slides the same size as photos*/
 /*with setting the same aspect ratio(20x9)*/
-@media screen and (max-width: 800px){
-    #slides{
-        display: flex;
-    }
-}
 
 #slides{
     position: relative;
@@ -13,7 +8,7 @@
     margin: 0;
     background-color: black;
     z-index: 10;
-    display: flex;
+    display: none;
 }
 #slides:before {
     display: block;
@@ -81,4 +76,10 @@
     color: white;
     font-weight: bold;
     font-size: 6em;
+}
+
+@media screen and (min-width: 900px){
+    #slides{
+        display: flex;
+    }
 }

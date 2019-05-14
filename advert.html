@@ -54,6 +54,7 @@
                 <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery">All</a>
                 <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery?sell">Buy</a>
                 <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/gallery?rent">Rent</a>
+                <a class="burger_submenu burger_submenu_one text" href="http://localhost:8080/map.html">On map</a>
                 <a class="burger_submenu_block text" href="http://localhost:8080/makeAdvert.html">Sell</a>
                 <div class="burger_submenu_block text">Agency<i class="fas fa-chevron-down"></i></div>
                 <a class="burger_submenu burger_submenu_two text" href="http://localhost:8080/about.html">About</a>
@@ -293,6 +294,7 @@
 	document.getElementsByClassName('button_want_to_see')[0].onclick = function(){
 		const tel = (document.getElementById('signup')) ? `${document.getElementById('explen_button').value}` : 0;
         if(!document.getElementById('explen_button')){
+			alert('We get your request! Our agent will call you soon.')
 			axios.post('/for_review', {
 				id: `${window.location.href.substr(start+1)}`,
 				telephone: tel
@@ -304,20 +306,19 @@
 				});
         }
 		else if(document.getElementById('explen_button').value.length > 5 && document.getElementById('explen_button').value.length < 14){
-			//if(!document.getElementsByClassName('button_want_to_see')[0])
+			alert('We get your request! Our agent will call you soon.')
 			axios.post('/for_review', {
 				id: `${window.location.href.substr(start+1)}`,
                 telephone: `${tel}`
 			})
                 .then(function(res){
-                	alert(res.data)
                 })
 				.catch(function (err) {
 					console.log(err);
 				});
         }
 		else{
-			document.getElementById('explen_button').innerText = 'required'
+			alert('The field with telephone is required.')
         }
 
     };
