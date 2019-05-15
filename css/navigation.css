@@ -43,6 +43,8 @@
 .sub_menu{
     list-style: none;
     display: none;
+    -webkit-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
     transition: all 0.6s ease;
     position: absolute;
     top: 39px;
@@ -122,7 +124,11 @@
 
 .share_wrapper{
     width: 20%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     margin: auto;
 }
@@ -138,9 +144,15 @@
 }
 .footer_text_block{
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 
+    -ms-flex-line-pack: center;
+
     align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 

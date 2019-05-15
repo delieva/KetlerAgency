@@ -22,7 +22,6 @@
     opacity: 0;
     /*min-width: 100;*/
     -webkit-transition: opacity 4s;
-    -moz-transition: opacity 4s;
     -o-transition: opacity 4s;
     transition: opacity 4s;
 }
@@ -36,7 +35,7 @@
 /*Inner div of a slider*/
 .slider_inside{
     position: center;
-    width: 55em;
+    width: 56em;
     z-index: 100000;
     margin: auto;
 }
@@ -80,6 +79,8 @@
 
 @media screen and (min-width: 900px){
     #slides{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 }

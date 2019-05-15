@@ -17,6 +17,9 @@
 }
 .card_photo_cover{
     /*background-image: linear-gradient(rgba(255, 255, 255) 25%, black 15%);*/
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(5%, rgba(0, 0, 0, 0.9)), color-stop(50%, rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+    background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
     height: 100%;
     position: relative;
@@ -49,8 +52,13 @@
 
 .card_container{
     padding: 0 5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 .type{
@@ -61,5 +69,6 @@
     right: 0.5em;
 }
 .card:hover{
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
